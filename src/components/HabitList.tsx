@@ -22,9 +22,9 @@ const HabitList = () => {
       <button onClick={handleAdd}>Add!</button>
 
       <ul>
-        <li>Habit 1</li>
-        <li>Habit 2</li>
-        <li>Habit 3</li>
+        {list.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
       </ul>
     </div>
   )
