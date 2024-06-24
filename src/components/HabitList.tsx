@@ -15,6 +15,10 @@ const HabitList = () => {
     setInput(e.target.value)
   }
 
+  // create a handleRemove event to remove specific row in the list
+  // filter through the list and find the correct index number associated to the row
+  // a delete button should be in each list item/row
+
   return (
     <div>
       <h1>Habit List</h1>
