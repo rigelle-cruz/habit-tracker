@@ -19,9 +19,6 @@ const HabitList = () => {
     const newList = list.filter((_, i) => i !== index)
     setList(newList)
   }
-  // create a handleRemove event to remove specific row in the list
-  // filter through the list and find the correct index number associated to the row
-  // a delete button should be in each list item/row
 
   return (
     <div>
