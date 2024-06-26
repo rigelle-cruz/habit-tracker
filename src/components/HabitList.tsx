@@ -1,8 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const HabitList = () => {
   const [list, setList] = useState<string[]>([])
   const [input, setInput] = useState<string>('')
+
+  useEffect(() => {
+    const savedList = JSON.parse(localStorage.getItem('list') || '[]')
+    if (savedList) {
+      setList(savedList)
+    }
+  }, [])
 
   const handleAdd = () => {
     if (input.trim()) {
