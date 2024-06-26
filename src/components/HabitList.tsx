@@ -11,6 +11,10 @@ const HabitList = () => {
     }
   }, [])
 
+  useEffect(() => {
+    localStorage.setItem('list', JSON.stringify(list))
+  }, [list])
+
   const handleAdd = () => {
     if (input.trim()) {
       setList([...list, input])
