@@ -49,7 +49,9 @@ const HabitList = () => {
     <div>
       <h1>Habit List</h1>
       <input type="text" value={input} onChange={handleInput} />
-      <button onClick={handleAdd}>Add!</button>
+      <button onClick={handleAdd}>
+        {editIndex !== null ? 'Update' : 'Add'}
+      </button>
 
       <ul>
         {list.map((item, index) => (
