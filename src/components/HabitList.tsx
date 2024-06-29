@@ -56,7 +56,8 @@ const HabitList = () => {
       <ul>
         {list.map((item, index) => (
           <li key={index}>
-            {item} <button onClick={() => handleDelete(index)}>Delete!</button>
+            {item} <button onClick={() => handleEdit(index)}>Edit!</button>
+            <button onClick={() => handleDelete(index)}>Delete!</button>
           </li>
         ))}
       </ul>
