@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 const HabitList = () => {
   const [list, setList] = useState<string[]>([])
   const [input, setInput] = useState<string>('')
-  const [editIndex, setEditIndex] = useState(null)
+  const [editIndex, setEditIndex] = useState<number | null>(null)
 
   useEffect(() => {
     const savedList = JSON.parse(localStorage.getItem('list') || '[]')
@@ -40,7 +40,7 @@ const HabitList = () => {
     setList(newList)
   }
 
-  const handleEdit = (index) => {
+  const handleEdit = (index: number) => {
     setInput(list[index])
     setEditIndex(index)
   }
