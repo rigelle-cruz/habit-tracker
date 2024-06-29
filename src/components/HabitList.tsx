@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 const HabitList = () => {
   const [list, setList] = useState<string[]>([])
   const [input, setInput] = useState<string>('')
+  const [editIndex, setEditIndex] = useState(null)
 
   useEffect(() => {
     const savedList = JSON.parse(localStorage.getItem('list') || '[]')
@@ -17,7 +18,15 @@ const HabitList = () => {
 
   const handleAdd = () => {
     if (input.trim()) {
-      setList([...list, input])
+      if (editIndex !== null) {
+        const newList = list.map((item, index) =>
+          index === editIndex ? input : item
+        )
+        setList(newList)
+        setEditIndex(null)
+      } else {
+        setList([...list, input])
+      }
       setInput('')
     }
   }
@@ -29,6 +38,11 @@ const HabitList = () => {
   const handleDelete = (index: number) => {
     const newList = list.filter((_, i) => i !== index)
     setList(newList)
+  }
+
+  const handleEdit = (index) => {
+    setInput(list[index])
+    setEditIndex(index)
   }
 
   return (
