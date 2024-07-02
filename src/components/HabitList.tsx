@@ -47,7 +47,6 @@ const HabitList = () => {
 
   return (
     <div className="habit-container">
-      <h1>Habit List</h1>
       <div className="input-group">
         <input
           type="text"
