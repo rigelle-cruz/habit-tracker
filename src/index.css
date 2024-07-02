@@ -1,29 +1,16 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --primary-color: #b3cde0; /* Pastel blue */
+  --secondary-color: #decbe4; /* Pastel purple */
+  --background-color: #f0f4f8; /* Light pastel background */
+  --text-color: #333;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  background-color: #f0f0f0;
+  background-color: var(--background-color);
 }
 
 h1 {
-  font-size: 2.5rem;
-  line-height: 1.1;
-  color: #333;
+  color: var(--text-color);
 }
 
 button:focus,
