@@ -46,16 +46,22 @@ const HabitList = () => {
   }
 
   return (
-    <div>
+    <div className="habit-container">
       <h1>Habit List</h1>
-      <input type="text" value={input} onChange={handleInput} />
-      <button onClick={handleAdd}>
-        {editIndex !== null ? 'Update' : 'Add'}
-      </button>
-
-      <ul>
+      <div className="input-group">
+        <input
+          type="text"
+          value={input}
+          onChange={handleInput}
+          placeholder="Enter a new habit"
+        />
+        <button onClick={handleAdd}>
+          {editIndex !== null ? 'Update' : 'Add'}
+        </button>
+      </div>
+      <ul className="habit-list">
         {list.map((item, index) => (
-          <li key={index}>
+          <li key={index} className="habit-item">
             {item} <button onClick={() => handleEdit(index)}>Edit!</button>
             <button onClick={() => handleDelete(index)}>Delete!</button>
           </li>
