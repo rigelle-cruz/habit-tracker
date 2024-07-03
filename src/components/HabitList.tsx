@@ -4,6 +4,7 @@ const HabitList = () => {
   const [list, setList] = useState<string[]>([])
   const [input, setInput] = useState<string>('')
   const [editIndex, setEditIndex] = useState<number | null>(null)
+  const [editingValue, setEditingValue] = useState<string>('')
 
   useEffect(() => {
     const savedList = JSON.parse(localStorage.getItem('list') || '[]')
@@ -18,15 +19,7 @@ const HabitList = () => {
 
   const handleAdd = () => {
     if (input.trim()) {
-      if (editIndex !== null) {
-        const newList = list.map((item, index) =>
-          index === editIndex ? input : item
-        )
-        setList(newList)
-        setEditIndex(null)
-      } else {
-        setList([...list, input])
-      }
+      setList([...list, input])
       setInput('')
     }
   }
@@ -41,8 +34,18 @@ const HabitList = () => {
   }
 
   const handleEdit = (index: number) => {
-    setInput(list[index])
     setEditIndex(index)
+    setEditingValue(list[index])
+  }
+
+  const handleEditChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEditingValue(e.target.value)
+  }
+
+  const handleEditSubmit = (index: number) => {
+    const newList = list.map((item, i) => (i === index ? editingValue : item))
+    setList(newList)
+    setEditIndex(null)
   }
 
   return (
@@ -54,15 +57,27 @@ const HabitList = () => {
           onChange={handleInput}
           placeholder="Enter a new habit"
         />
-        <button onClick={handleAdd}>
-          {editIndex !== null ? 'Update' : 'Add'}
-        </button>
+        <button onClick={handleAdd}>Add</button>
       </div>
       <ul className="habit-list">
         {list.map((item, index) => (
           <li key={index} className="habit-item">
-            {item} <button onClick={() => handleEdit(index)}>Edit!</button>
-            <button onClick={() => handleDelete(index)}>Delete!</button>
+            {editIndex === index ? (
+              <>
+                <input
+                  type="text"
+                  value={editingValue}
+                  onChange={handleEditChange}
+                />
+                <button onClick={() => handleEditSubmit(index)}>Save</button>
+              </>
+            ) : (
+              <>
+                {item}
+                <button onClick={() => handleEdit(index)}>Edit!</button>
+                <button onClick={() => handleDelete(index)}>Delete!</button>
+              </>
+            )}
           </li>
         ))}
       </ul>
