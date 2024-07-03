@@ -28,6 +28,12 @@ const HabitList = () => {
     setInput(e.target.value)
   }
 
+  const handlePressInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleAdd()
+    }
+  }
+
   const handleDelete = (index: number) => {
     const newList = list.filter((_, i) => i !== index)
     setList(newList)
@@ -55,6 +61,7 @@ const HabitList = () => {
           type="text"
           value={input}
           onChange={handleInput}
+          onKeyDown={handlePressInput}
           placeholder="Enter a new habit"
         />
         <button onClick={handleAdd}>Add</button>
@@ -68,6 +75,9 @@ const HabitList = () => {
                   type="text"
                   value={editingValue}
                   onChange={handleEditChange}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') handleEditSubmit(index)
+                  }}
                 />
                 <button onClick={() => handleEditSubmit(index)}>Save</button>
               </>
