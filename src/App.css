@@ -59,12 +59,20 @@ button:hover {
   color: var(--text-color);
 }
 
+.habit-item input[type='text'] {
+  flex-grow: 1;
+  margin-right: 0.5rem;
+}
+
 .habit-item button {
   margin-left: 0.5rem;
-  background-color: #ff6f61;
+}
+
+.habit-item button:last-child {
+  background-color: #ff6f61; /* Pastel red for delete button */
   color: white;
 }
 
-.habit-item button:hover {
+.habit-item button:last-child:hover {
   background-color: #e45b54;
 }
