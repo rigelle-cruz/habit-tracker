@@ -7,9 +7,9 @@ const HabitList = () => {
   const [editingValue, setEditingValue] = useState<string>('')
 
   useEffect(() => {
-    const savedList = JSON.parse(localStorage.getItem('list') || '[]')
+    const savedList = localStorage.getItem('list')
     if (savedList) {
-      setList(savedList)
+      setList(JSON.parse(savedList))
     }
   }, [])
 
@@ -28,7 +28,7 @@ const HabitList = () => {
     setInput(e.target.value)
   }
 
-  const handlePressInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleAdd()
     }
@@ -61,7 +61,7 @@ const HabitList = () => {
           type="text"
           value={input}
           onChange={handleInput}
-          onKeyDown={handlePressInput}
+          onKeyDown={handleKeyDown}
           placeholder="Enter a new habit"
         />
         <button onClick={handleAdd}>Add</button>
