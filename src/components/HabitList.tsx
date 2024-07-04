@@ -1,25 +1,43 @@
 import { useEffect, useState } from 'react'
 
+type Habit = {
+  id: string
+  text: string
+}
+
 const HabitList = () => {
-  const [list, setList] = useState<string[]>([])
+  const [list, setList] = useState<Habit[]>([])
   const [input, setInput] = useState<string>('')
   const [editIndex, setEditIndex] = useState<number | null>(null)
   const [editingValue, setEditingValue] = useState<string>('')
 
+  const LOCAL_STORAGE_KEY = 'habitTrackerList'
+
   useEffect(() => {
-    const savedList = localStorage.getItem('list')
-    if (savedList) {
-      setList(JSON.parse(savedList))
+    try {
+      const savedList = localStorage.getItem(LOCAL_STORAGE_KEY)
+      console.log('Loaded from localStorage:', savedList)
+      if (savedList) {
+        setList(JSON.parse(savedList))
+      }
+    } catch (error) {
+      console.error('Failed to load from localStorage:', error)
     }
   }, [])
 
   useEffect(() => {
-    localStorage.setItem('list', JSON.stringify(list))
+    try {
+      console.log('Saving to localStorage:', list)
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(list))
+    } catch (error) {
+      console.error('Failed to save to localStorage:', error)
+    }
   }, [list])
 
   const handleAdd = () => {
     if (input.trim()) {
-      setList([...list, input])
+      const newItem: Habit = { id: Date.now().toString(), text: input }
+      setList([...list, newItem])
       setInput('')
     }
   }
@@ -41,7 +59,7 @@ const HabitList = () => {
 
   const handleEdit = (index: number) => {
     setEditIndex(index)
-    setEditingValue(list[index])
+    setEditingValue(list[index].text)
   }
 
   const handleEditChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,7 +67,9 @@ const HabitList = () => {
   }
 
   const handleEditSubmit = (index: number) => {
-    const newList = list.map((item, i) => (i === index ? editingValue : item))
+    const newList = list.map((item, i) =>
+      i === index ? { ...item, text: editingValue } : item
+    )
     setList(newList)
     setEditIndex(null)
   }
@@ -68,7 +88,7 @@ const HabitList = () => {
       </div>
       <ul className="habit-list">
         {list.map((item, index) => (
-          <li key={index} className="habit-item">
+          <li key={item.id} className="habit-item">
             {editIndex === index ? (
               <>
                 <input
@@ -83,7 +103,7 @@ const HabitList = () => {
               </>
             ) : (
               <>
-                {item}
+                {item.text}
                 <button onClick={() => handleEdit(index)}>Edit!</button>
                 <button onClick={() => handleDelete(index)}>Delete!</button>
               </>
