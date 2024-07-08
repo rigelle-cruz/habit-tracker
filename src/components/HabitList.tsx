@@ -68,6 +68,7 @@ const HabitList = () => {
 
   return (
     <div className="habit-container">
+      <h1>Habit Tracker</h1>
       <div className="input-group">
         <input
           type="text"
