@@ -17,7 +17,6 @@ const HabitList = () => {
   const [editIndex, setEditIndex] = useState<number | null>(null)
   const [editingValue, setEditingValue] = useState<string>('')
 
-  // Load the list from localStorage when the component mounts
   useEffect(() => {
     const savedHabits = getHabitsFromLocalStorage()
     console.log('Loaded from localStorage:', savedHabits)

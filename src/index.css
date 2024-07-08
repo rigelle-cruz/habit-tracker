@@ -1,7 +1,7 @@
 :root {
-  --primary-color: #b3cde0; /* Pastel blue */
-  --secondary-color: #decbe4; /* Pastel purple */
-  --background-color: #f0f4f8; /* Light pastel background */
+  --primary-color: #b3cde0;
+  --secondary-color: #decbe4;
+  --background-color: #f0f4f8;
   --text-color: #333;
 }
 

@@ -69,7 +69,7 @@ button:hover {
 }
 
 .habit-item button:last-child {
-  background-color: #ff6f61; /* Pastel red for delete button */
+  background-color: #ff6f61;
   color: white;
 }
 
