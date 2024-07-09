@@ -97,9 +97,15 @@ const HabitList = () => {
                 </>
               ) : (
                 <>
-                  {item.text}
-                  <button onClick={() => handleEdit(index)}>Edit!</button>
-                  <button onClick={() => handleDelete(index)}>Delete!</button>
+                  <span>{item.text}</span>
+                  <div>
+                    <button onClick={() => handleEdit(index)}>
+                      <i className="fas fa-edit"></i>
+                    </button>
+                    <button onClick={() => handleDelete(index)}>
+                      <i className="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </>
               )}
             </li>
