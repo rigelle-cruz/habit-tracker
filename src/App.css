@@ -58,6 +58,7 @@ button:hover {
   border: 1px solid #ccc;
   border-radius: 4px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   color: var(--text-color);
 }
@@ -68,14 +69,18 @@ button:hover {
 }
 
 .habit-item button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+  padding: 0;
   margin-left: 0.5rem;
 }
 
 .habit-item button:last-child {
-  background-color: #ff6f61;
-  color: white;
+  color: #ff6f61;
 }
 
 .habit-item button:last-child:hover {
-  background-color: #e45b54;
+  color: #e45b54;
 }
