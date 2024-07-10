@@ -5,7 +5,13 @@
   --text-color: #708294;
 }
 
+@font-face {
+  font-family: "Silkscreen";
+  src: url(public/font/Silkscreen/slkscr.ttf);
+}
+
 body {
+  font-family: "Silkscreen";
   background-color: var(--background-color);
   
 }

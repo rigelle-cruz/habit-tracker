@@ -111,7 +111,7 @@ const HabitList = () => {
 						</li>
 					))
 				) : (
-					<p>Add a habit!!</p>
+					<p></p>
 				)}
 			</ul>
 		</div>
