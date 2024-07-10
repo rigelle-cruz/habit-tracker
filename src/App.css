@@ -23,18 +23,15 @@
 input[type='text'] {
   padding: 0.5rem;
   font-size: 1rem;
+  color: white;
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-right: 0.5rem;
-  background-color: var(--secondary-color);
+  background-color: #708294;
 }
 
-input:hover {
-  background-color: #decbe472;
-}
 
 button {
-  border-radius: 4px;
   border: none;
   padding: 0.5rem 1rem;
   font-size: 1rem;
@@ -45,7 +42,8 @@ button {
 }
 
 button:hover {
-  background-color: var(--secondary-color);
+  background-color: #708294;
+  color: white;
 }
 
 .habit-list {
@@ -64,13 +62,13 @@ button:hover {
 }
 
 .habit-item input[type='text'] {
+  border: none;
   flex-grow: 1;
   margin-right: 0.5rem;
 }
 
 .habit-item button {
   background: none;
-  border: none;
   cursor: pointer;
   color: var(--text-color);
   padding: 0;
@@ -79,10 +77,12 @@ button:hover {
 
 .habit-item button:last-child {
   color: #ff6f61;
+  outline: none;
 }
 
 .habit-item button:last-child:hover {
   color: #e45b54;
+  outline: none;
 }
 
 .pixel-corners,
