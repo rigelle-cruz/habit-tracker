@@ -82,7 +82,7 @@ const HabitList = () => {
 			<ul className="habit-list">
 				{list.length > 0 ? (
 					list.map((item, index) => (
-						<li key={item.id} className="habit-item">
+						<li key={item.id} className="habit-item pixel-corners-list">
 							{editIndex === index ? (
 								<>
 									<input
