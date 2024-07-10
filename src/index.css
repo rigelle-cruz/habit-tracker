@@ -1,12 +1,13 @@
 :root {
   --primary-color: #f0f4f8;
   --secondary-color: #decbe4;
-  --background-color: #b3cde0;
+  --background-color: #49606f;
   --text-color: #708294;
 }
 
 body {
   background-color: var(--background-color);
+  
 }
 
 h1 {
