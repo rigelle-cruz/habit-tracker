@@ -37,15 +37,15 @@ button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
   font-family: "Silkscreen", sans-serif; 
-  background-color: var(--secondary-color);
-  color: var(--text-color);
+  background-color: #708294;
+  color: var(--primary-color);
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #708294;
-  color: white;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
 }
 
 .habit-list {
