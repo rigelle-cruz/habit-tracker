@@ -71,11 +71,12 @@ const HabitList = () => {
 			<h1>Habit Tracker</h1>
 			<div className="input-group">
 				<input
+					className="pixel-corners-no-border"
 					type="text"
 					value={input}
 					onChange={handleInput}
 					onKeyDown={handleKeyDown}
-					placeholder="Enter a new habit"
+					placeholder="Enter a new habit..."
 				/>
 				<button className=" pixel-corners-no-border" onClick={handleAdd}>
 					Add
