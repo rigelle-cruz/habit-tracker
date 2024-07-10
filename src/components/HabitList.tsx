@@ -67,7 +67,7 @@ const HabitList = () => {
 	};
 
 	return (
-		<div className="habit-container pixel-corners pixel-border">
+		<div className="habit-container pixel-corners">
 			<h1>Habit Tracker</h1>
 			<div className="input-group">
 				<input
@@ -77,12 +77,14 @@ const HabitList = () => {
 					onKeyDown={handleKeyDown}
 					placeholder="Enter a new habit"
 				/>
-				<button onClick={handleAdd}>Add</button>
+				<button className=" pixel-corners-no-border" onClick={handleAdd}>
+					Add
+				</button>
 			</div>
 			<ul className="habit-list">
 				{list.length > 0 ? (
 					list.map((item, index) => (
-						<li key={item.id} className="habit-item pixel-corners-list">
+						<li key={item.id} className="habit-item pixel-corners-no-border">
 							{editIndex === index ? (
 								<>
 									<input

@@ -35,7 +35,7 @@ input:hover {
 
 button {
   border-radius: 4px;
-  border: 1px solid transparent;
+  border: none;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   background-color: var(--secondary-color);
@@ -57,8 +57,6 @@ button:hover {
   background-color: var(--secondary-color);
   padding: 0.75rem;
   margin-bottom: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -249,7 +247,7 @@ button:hover {
   margin: -8px;
 }
 
-.pixel-corners-list {
+.pixel-corners-no-border {
   clip-path: polygon(
     0px calc(100% - 4px),
     4px calc(100% - 4px),
