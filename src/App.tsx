@@ -16,7 +16,7 @@ function App() {
 	return (
 		<div className="App">
 			<div className="pixel-background">
-				{[...Array(80)].map((_, index: number) => (
+				{[...Array(1000)].map((_, index: number) => (
 					<div key={index} className="pixel"></div>
 				))}
 			</div>
