@@ -20,10 +20,7 @@ function App() {
 					<div key={index} className="pixel"></div>
 				))}
 			</div>
-
-			<header className="App-header">
-				<HabitList />
-			</header>
+			<HabitList />
 		</div>
 	);
 }
