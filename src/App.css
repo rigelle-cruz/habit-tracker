@@ -44,8 +44,7 @@ button {
 }
 
 button:hover {
-  background-color: var(--secondary-color);
-  color: var(--text-color);
+  background-color: #708294a6;
 }
 
 .habit-list {
@@ -78,12 +77,12 @@ button:hover {
 }
 
 .habit-item button {
-  color: #7082948a;
+  color: #708294;
   outline: none;
 }
 
 .habit-item button:hover {
-  color: #708294;
+  color: #708294a6;
   outline: none;
 }
 
