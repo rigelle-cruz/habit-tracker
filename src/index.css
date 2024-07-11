@@ -1,7 +1,7 @@
 :root {
   --primary-color: #f0f4f8;
   --secondary-color: #decbe4;
-  --background-color: #49606f;
+  --background-color: #93b8d1;
   --text-color: #708294;
 }
 
@@ -25,3 +25,28 @@ button:focus-visible {
   outline: none;
 }
 
+
+.pixel-background {
+  position: absolute;
+  width: 100%;  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+.pixel {
+  background: #ffffff79;
+  width: 10%;
+  padding-top: 10%;
+  float: left;
+  opacity: 0.0;
+  animation: blink 5s infinite;
+}
+
+@keyframes blink {
+  0%    {opacity: 0.0;}
+  25%   {opacity: 0.0;}
+  50%   {opacity: 0.5;}
+  100%  {opacity: 0.0;}
+}
