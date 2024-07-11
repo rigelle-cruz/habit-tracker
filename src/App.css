@@ -77,6 +77,16 @@ button:hover {
   margin-left: 0.5rem;
 }
 
+.habit-item button {
+  color: #7082948a;
+  outline: none;
+}
+
+.habit-item button:hover {
+  color: #708294;
+  outline: none;
+}
+
 .habit-item button:last-child {
   color: #ff6f61;
   outline: none;
