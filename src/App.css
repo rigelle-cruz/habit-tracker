@@ -31,6 +31,23 @@ input[type='text'] {
   margin-right: 0.5rem;
 }
 
+.completed {
+	text-decoration: line-through;
+	text-decoration-thickness: 3px;
+	color: gray;
+	position: relative;
+}
+
+.completed::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0.1em; 
+	border-bottom: 3px solid gray; 
+	pointer-events: none; 
+}
+
 
 button {
   border: none;
