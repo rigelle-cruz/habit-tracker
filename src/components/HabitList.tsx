@@ -98,11 +98,6 @@ const HabitList = () => {
 				<button className=" pixel-corners-no-border" onClick={handleAdd}>
 					Add
 				</button>
-				<button
-					className=" pixel-corners-no-border"
-					onClick={() => setShowCompleted(!showCompleted)}>
-					{showCompleted ? 'Show All' : 'Show Completed'}
-				</button>
 			</div>
 
 			<ul className="habit-list">
@@ -148,6 +143,12 @@ const HabitList = () => {
 				) : (
 					<p></p>
 				)}
+
+				<button
+					className=" pixel-corners-no-border"
+					onClick={() => setShowCompleted(!showCompleted)}>
+					{showCompleted ? 'Show All' : 'Show Completed'}
+				</button>
 			</ul>
 		</div>
 	);
