@@ -9,6 +9,7 @@ import {
 type Habit = {
 	id: string;
 	text: string;
+	completed: boolean;
 };
 
 const HabitList = () => {
