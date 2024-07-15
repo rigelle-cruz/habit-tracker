@@ -17,6 +17,8 @@ const HabitList = () => {
 	const [input, setInput] = useState<string>('');
 	const [editIndex, setEditIndex] = useState<number | null>(null);
 	const [editingValue, setEditingValue] = useState<string>('');
+	const [showCompleted, setShowCompleted] = useState<boolean>(false); 
+
 
 	useEffect(() => {
 		const savedHabits = getHabitsFromLocalStorage();
@@ -67,6 +69,14 @@ const HabitList = () => {
 		updateHabitInLocalStorage(updatedHabit);
 		setEditIndex(null);
 	};
+
+	const handleComplete = (index: number) => {
+		const updatedHabit = { ...list[index], completed: !list[index].completed };
+		const newList = list.map((item, i) => (i === index ? updatedHabit : item));
+		setList(newList);
+		updateHabitInLocalStorage(updatedHabit);
+	};
+	
 
 	return (
 		<div className="habit-container pixel-corners">

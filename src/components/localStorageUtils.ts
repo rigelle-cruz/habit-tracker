@@ -1,6 +1,7 @@
 type Habit = {
   id: string
   text: string
+  completed: boolean;
 }
 
 const LOCAL_STORAGE_KEY = 'habitTrackerAppList'
