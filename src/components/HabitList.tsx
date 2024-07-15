@@ -17,8 +17,7 @@ const HabitList = () => {
 	const [input, setInput] = useState<string>('');
 	const [editIndex, setEditIndex] = useState<number | null>(null);
 	const [editingValue, setEditingValue] = useState<string>('');
-	const [showCompleted, setShowCompleted] = useState<boolean>(false); 
-
+	const [showCompleted, setShowCompleted] = useState<boolean>(false);
 
 	useEffect(() => {
 		const savedHabits = getHabitsFromLocalStorage();
@@ -28,13 +27,16 @@ const HabitList = () => {
 
 	const handleAdd = () => {
 		if (input.trim()) {
-			const newItem: Habit = { id: Date.now().toString(), text: input, completed: false };
+			const newItem: Habit = {
+				id: Date.now().toString(),
+				text: input,
+				completed: false,
+			};
 			setList((prevList) => [...prevList, newItem]);
 			addHabitToLocalStorage(newItem);
 			setInput('');
 		}
 	};
-	
 
 	const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setInput(e.target.value);
@@ -76,7 +78,10 @@ const HabitList = () => {
 		setList(newList);
 		updateHabitInLocalStorage(updatedHabit);
 	};
-	
+
+	const filteredList = showCompleted
+		? list.filter((habit) => habit.completed)
+		: list;
 
 	return (
 		<div className="habit-container pixel-corners">
@@ -93,11 +98,21 @@ const HabitList = () => {
 				<button className=" pixel-corners-no-border" onClick={handleAdd}>
 					Add
 				</button>
+				<button
+					className=" pixel-corners-no-border"
+					onClick={() => setShowCompleted(!showCompleted)}>
+					{showCompleted ? 'Show All' : 'Show Completed'}
+				</button>
 			</div>
+
 			<ul className="habit-list">
-				{list.length > 0 ? (
-					list.map((item, index) => (
-						<li key={item.id} className="habit-item pixel-corners-no-border">
+				{filteredList.length > 0 ? (
+					filteredList.map((item, index) => (
+						<li
+							key={item.id}
+							className={`habit-item pixel-corners-no-border ${
+								item.completed ? 'completed' : ''
+							}`}>
 							{editIndex === index ? (
 								<>
 									<input
@@ -112,6 +127,11 @@ const HabitList = () => {
 								</>
 							) : (
 								<>
+									<input
+										type="checkbox"
+										checked={item.completed}
+										onChange={() => handleComplete(index)}
+									/>
 									<span>{item.text}</span>
 									<div>
 										<button onClick={() => handleEdit(index)}>
