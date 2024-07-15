@@ -26,12 +26,13 @@ const HabitList = () => {
 
 	const handleAdd = () => {
 		if (input.trim()) {
-			const newItem: Habit = { id: Date.now().toString(), text: input };
+			const newItem: Habit = { id: Date.now().toString(), text: input, completed: false };
 			setList((prevList) => [...prevList, newItem]);
 			addHabitToLocalStorage(newItem);
 			setInput('');
 		}
 	};
+	
 
 	const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setInput(e.target.value);
