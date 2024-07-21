@@ -24,6 +24,17 @@ button:focus-visible {
   outline: none;
 }
 
+.clickable-asset {
+  cursor: pointer;
+  width: 200px;
+	height: auto;
+	transition: transform 0.2s;
+}
+
+.clickable-asset:hover {
+	transform: scale(1.1);
+}
+
 .pixel-background {
   position: absolute;
   width: 100%;

@@ -10,6 +10,7 @@ const HomeScreen = ({ onItemClick }: HomeScreenProps) => {
 				src="public/images/pixel-heart.png"
 				alt="Click to habits"
 				onClick={onItemClick}
+				className="clickable-asset"
 			/>
 		</div>
 	);
