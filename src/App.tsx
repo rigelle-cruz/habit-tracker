@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import HabitList from './components/HabitList';
+import HomeScreen from './components/HomeScreen';
 
 function App() {
-	const [showList, setShowList] = useState(false)
+	const [showList, setShowList] = useState(false);
 
 	useEffect(() => {
 		const pix = document.getElementsByClassName(
@@ -14,19 +15,20 @@ function App() {
 			pix[i].style.animationDelay = Math.ceil(Math.random() * 5000) + 'ms';
 		}
 	}, []);
-	
+
 	const handleAssetClick = () => {
-		setShowList(true)
-	}
+		setShowList(true);
+	};
 
 	return (
 		<div className="App">
-			<div className="pixel-background">
+			{showList ? <HabitList /> : <HomeScreen onItemClick={handleAssetClick} />}
+			{/* <div className="pixel-background">
 				{[...Array(1000)].map((_, index: number) => (
 					<div key={index} className="pixel"></div>
 				))}
-			</div>
-			<HabitList />
+			</div> */}
+			
 		</div>
 	);
 }
