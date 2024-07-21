@@ -3,6 +3,8 @@ import './App.css';
 import HabitList from './components/HabitList';
 
 function App() {
+	const [showList, setShowList] = useState(false)
+
 	useEffect(() => {
 		const pix = document.getElementsByClassName(
 			'pixel'
@@ -12,6 +14,10 @@ function App() {
 			pix[i].style.animationDelay = Math.ceil(Math.random() * 5000) + 'ms';
 		}
 	}, []);
+	
+	const handleAssetClick = () => {
+		setShowList(true)
+	}
 
 	return (
 		<div className="App">
