@@ -23,12 +23,11 @@ function App() {
 	return (
 		<div className="App">
 			{showList ? <HabitList /> : <HomeScreen onItemClick={handleAssetClick} />}
-			{/* <div className="pixel-background">
+			<div className="pixel-background">
 				{[...Array(1000)].map((_, index: number) => (
 					<div key={index} className="pixel"></div>
 				))}
-			</div> */}
-			
+			</div>
 		</div>
 	);
 }
