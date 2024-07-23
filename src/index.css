@@ -24,6 +24,10 @@ button:focus-visible {
   outline: none;
 }
 
+.home-screen {
+  transform: translate(0%, 100%);
+}
+
 .clickable-asset {
   cursor: pointer;
   width: 200px;
