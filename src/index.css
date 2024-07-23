@@ -10,6 +10,20 @@
   src: url(/font/Silkscreen/slkscr.ttf);
 }
 
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	overflow: hidden;
+}
+
+.App {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
 body {
   font-family: 'Silkscreen';
   background-color: var(--background-color);
@@ -22,10 +36,6 @@ h1 {
 button:focus,
 button:focus-visible {
   outline: none;
-}
-
-.home-screen {
-  transform: translate(0%, 100%);
 }
 
 .clickable-asset {
