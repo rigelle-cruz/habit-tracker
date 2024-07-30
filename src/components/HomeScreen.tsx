@@ -6,7 +6,7 @@ const HomeScreen = ({ onItemClick }: HomeScreenProps) => {
 	return (
 		<div className="home-screen">
 			<img
-				src="public/images/pixel-heart.png"
+				src="/images/pixel-heart.png"
 				alt="Click to habits"
 				onClick={onItemClick}
 				className="clickable-asset"
