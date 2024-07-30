@@ -14,3 +14,9 @@ I decided to build this react app as I was looking for a habit tracker that comb
 - Can set up a focused timer for a specific habit
 - See weekly progress in a timeline
 - See your progress through an interactive plant that grows with you! The more you complete your tasks the plant flourishes!
+
+## Technical Process:
+
+- I chose to incorporate LocalStorage to save the list in the browser. This enables users to view their personal list. 
+- Used zod to define type
+...
