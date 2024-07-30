@@ -4,7 +4,7 @@ import {
 	getHabitsFromLocalStorage,
 	removeHabitFromLocalStorage,
 	updateHabitInLocalStorage,
-} from './localStorageUtils.ts';
+} from '../models/localStorageUtils.ts';
 
 type Habit = {
 	id: string;
