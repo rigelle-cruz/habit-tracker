@@ -5,12 +5,7 @@ import {
 	removeHabitFromLocalStorage,
 	updateHabitInLocalStorage,
 } from '../models/localStorageUtils.ts';
-
-type Habit = {
-	id: string;
-	text: string;
-	completed: boolean;
-};
+import { HabitSchema, Habit } from '../models/habitSchema.ts';
 
 const HabitList = () => {
 	const [list, setList] = useState<Habit[]>([]);
@@ -20,10 +15,16 @@ const HabitList = () => {
 	const [showCompleted, setShowCompleted] = useState<boolean>(false);
 
 	useEffect(() => {
-		const savedHabits = getHabitsFromLocalStorage();
-		console.log('Loaded from localStorage:', savedHabits);
-		setList(savedHabits);
-	}, []);
+    const savedHabits = getHabitsFromLocalStorage();
+    const parsedHabits = HabitSchema.array().safeParse(savedHabits);
+
+    if (parsedHabits.success) {
+      console.log('Loaded from localStorage:', parsedHabits.data);
+      setList(parsedHabits.data);
+    } else {
+      console.error('Error loading habits from localStorage:', parsedHabits.error);
+    }
+  }, []);
 
 	const handleAdd = () => {
 		if (input.trim()) {
