@@ -9,7 +9,7 @@ const plantAssets = [
 	'public/images/plant/temp-plant-4.jpg',
 ];
 
-export const Plant = ({level}: PlantProps) => {
+const Plant = ({ level }: PlantProps) => {
 	// Users get assigned a random plant seed.
 	// Every 10 habit they complete, increment the plant's level
 	// Pass the current level and image source according to the level
@@ -17,5 +17,11 @@ export const Plant = ({level}: PlantProps) => {
 	// Whenever a habit is completed, it helps the seed grow into a plant ---> to promote productivity
 	// They can view their collection of plants over time.
 
-	return <div><img src={plantAssets[level + 1]} alt={`Plant level ${level}`} /></div>;
+	return (
+		<div>
+			<img src={plantAssets[level - 1]} alt={`Plant level ${level}`} />
+		</div>
+	);
 };
+
+export default Plant;
