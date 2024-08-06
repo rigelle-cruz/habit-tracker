@@ -13,6 +13,8 @@ const HabitList = () => {
 	const [editIndex, setEditIndex] = useState<number | null>(null);
 	const [editingValue, setEditingValue] = useState<string>('');
 	const [showCompleted, setShowCompleted] = useState<boolean>(false);
+	const [completedCount, setCompletedCount] = useState<number>(0);
+    const [plantLevel, setPlantLevel] = useState<number>(1);
 
 	useEffect(() => {
     const savedHabits = getHabitsFromLocalStorage();
