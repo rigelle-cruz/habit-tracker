@@ -1,3 +1,14 @@
+type PlantProps = {
+  level:number;
+}
+
+const plantAssets = [
+  'public/images/plant/temp-plant-1.jpg',
+  'public/images/plant/temp-plant-2.jpg',
+  'public/images/plant/temp-plant-3.jpg',
+  'public/images/plant/temp-plant-4.jpg',
+]
+
 export const Plant = () => {
 
   // Users get assigned a random plant seed.
