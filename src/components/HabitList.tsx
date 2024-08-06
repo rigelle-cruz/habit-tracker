@@ -6,6 +6,7 @@ import {
 	updateHabitInLocalStorage,
 } from '../models/localStorageUtils.ts';
 import { HabitSchema, Habit } from '../models/habitSchema.ts';
+import Plant from './Plant';
 
 const HabitList = () => {
 	const [list, setList] = useState<Habit[]>([]);
@@ -14,19 +15,22 @@ const HabitList = () => {
 	const [editingValue, setEditingValue] = useState<string>('');
 	const [showCompleted, setShowCompleted] = useState<boolean>(false);
 	const [completedCount, setCompletedCount] = useState<number>(0);
-    const [plantLevel, setPlantLevel] = useState<number>(1);
+	const [plantLevel, setPlantLevel] = useState<number>(1);
 
 	useEffect(() => {
-    const savedHabits = getHabitsFromLocalStorage();
-    const parsedHabits = HabitSchema.array().safeParse(savedHabits);
+		const savedHabits = getHabitsFromLocalStorage();
+		const parsedHabits = HabitSchema.array().safeParse(savedHabits);
 
-    if (parsedHabits.success) {
-      console.log('Loaded from localStorage:', parsedHabits.data);
-      setList(parsedHabits.data);
-    } else {
-      console.error('Error loading habits from localStorage:', parsedHabits.error);
-    }
-  }, []);
+		if (parsedHabits.success) {
+			console.log('Loaded from localStorage:', parsedHabits.data);
+			setList(parsedHabits.data);
+		} else {
+			console.error(
+				'Error loading habits from localStorage:',
+				parsedHabits.error
+			);
+		}
+	}, []);
 
 	const handleAdd = () => {
 		if (input.trim()) {
@@ -80,7 +84,19 @@ const HabitList = () => {
 		const newList = list.map((item, i) => (i === index ? updatedHabit : item));
 		setList(newList);
 		updateHabitInLocalStorage(updatedHabit);
+
+		const newCompletedCount = newList.filter((habit) => habit.completed).length;
+		setCompletedCount(newCompletedCount);
+		const newLevel = Math.min(4, Math.floor(newCompletedCount / 10) + 1);
+		setPlantLevel(newLevel);
+
+		if (newLevel === 4 && newCompletedCount % 10 === 0) {
+			alert('NEW SEED AVAILABLE!');
+		}
+		setCompletedCount(completedCount);
 	};
+
+
 
 	const filteredList = showCompleted
 		? list.filter((habit) => habit.completed)
@@ -153,6 +169,10 @@ const HabitList = () => {
 					{showCompleted ? 'Show All' : 'Show Completed'}
 				</button>
 			</ul>
+
+			<div className="plant-section">
+				<Plant level={plantLevel} />
+			</div>
 		</div>
 	);
 };
