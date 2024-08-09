@@ -6,7 +6,10 @@ import {
 	updateHabitInLocalStorage,
 } from '../models/localStorageUtils.ts';
 import { HabitSchema, Habit } from '../models/habitSchema.ts';
-import { addDeletedHabitToLocalStorage } from '../models/deletedHabitsUtils.ts';
+import {
+	addDeletedHabitToLocalStorage,
+	getDeletedHabitsFromLocalStorage,
+} from '../models/deletedHabitsUtils.ts';
 import Plant from './Plant';
 
 const HabitList = () => {
@@ -83,20 +86,30 @@ const HabitList = () => {
 	};
 
 	const handleComplete = (index: number) => {
+		// Retrieve active habits from local storage
+		const activeHabits = getHabitsFromLocalStorage();
+
+		// Retrieve deleted habits from local storage
+		const deletedHabits = getDeletedHabitsFromLocalStorage();
+
+		const allHabits = [...activeHabits, ...deletedHabits];
+
 		const updatedHabit = { ...list[index], completed: !list[index].completed };
 		const newList = list.map((item, i) => (i === index ? updatedHabit : item));
 		setList(newList);
 		updateHabitInLocalStorage(updatedHabit);
 
-		const newCompletedCount = newList.filter((habit) => habit.completed).length;
-		setCompletedCount(newCompletedCount);
+		const newCompletedCount = allHabits.filter(
+			(habit) => habit.completed
+		).length;
+		setCompletedCount(completedCount);
+
 		const newLevel = Math.min(4, Math.floor(newCompletedCount / 10) + 1);
 		setPlantLevel(newLevel);
 
 		if (newLevel === 4 && newCompletedCount % 10 === 0) {
 			alert('NEW SEED AVAILABLE!');
 		}
-		setCompletedCount(completedCount);
 	};
 
 	const filteredList = showCompleted
