@@ -6,6 +6,7 @@ import {
 	updateHabitInLocalStorage,
 } from '../models/localStorageUtils.ts';
 import { HabitSchema, Habit } from '../models/habitSchema.ts';
+import { addDeletedHabitToLocalStorage } from '../models/deletedHabitsUtils.ts';
 import Plant from './Plant';
 
 const HabitList = () => {
@@ -57,8 +58,10 @@ const HabitList = () => {
 
 	const handleDelete = (index: number) => {
 		const habitId = list[index].id;
+		const habitToDelete = list[index];
 		const newList = list.filter((_, i) => i !== index);
 		setList(newList);
+		addDeletedHabitToLocalStorage(habitToDelete);
 		removeHabitFromLocalStorage(habitId);
 	};
 
@@ -95,8 +98,6 @@ const HabitList = () => {
 		}
 		setCompletedCount(completedCount);
 	};
-
-
 
 	const filteredList = showCompleted
 		? list.filter((habit) => habit.completed)
