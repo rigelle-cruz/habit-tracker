@@ -201,11 +201,9 @@ const HabitList = () => {
 					</button>
 				</ul>
 			</div>
-			<div className=''>
 				<div className="plant-section">
 					<Plant level={plantLevel} />
 				</div>
-			</div>
 		</div>
 	);
 };

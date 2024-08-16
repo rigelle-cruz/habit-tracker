@@ -124,6 +124,10 @@ button:hover {
   outline: none;
 }
 
+.plant-section {
+margin: 1rem; 
+}
+
 .pixel-corners,
 .pixel-corners--wrapper {
   clip-path: polygon(0px calc(100% - 20px),
