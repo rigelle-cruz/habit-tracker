@@ -118,83 +118,93 @@ const HabitList = () => {
 		: list;
 
 	return (
-		<div className="habit-container pixel-corners">
-			<h1>Habit Tracker</h1>
-			<div className="input-group">
-				<input
-					className="pixel-corners-no-border"
-					type="text"
-					value={input}
-					onChange={handleInput}
-					onKeyDown={handleKeyDown}
-					placeholder="Enter a new habit..."
-				/>
-				<button className=" pixel-corners-no-border" onClick={handleAdd}>
-					Add
-				</button>
-			</div>
+	<div>
 
-			<ul className="habit-list">
-				{filteredList.length > 0 ? (
-					filteredList.map((item, index) => (
-						<li
-							key={item.id}
-							className={`habit-item pixel-corners-no-border ${
-								item.completed ? 'completed' : ''
-							}`}>
-							{editIndex === index ? (
-								<>
-									<input
-										type="text"
-										value={editingValue}
-										onChange={handleEditChange}
-										onKeyDown={(e) => {
-											if (e.key === 'Enter') handleEditSubmit(index);
-										}}
-									/>
-									<button onClick={() => handleEditSubmit(index)}>Save</button>
-								</>
-							) : (
-								<>
-									<input
-										type="checkbox"
-										checked={item.completed}
-										onChange={() => handleComplete(index)}
-									/>
-									<span>{item.text}</span>
-									<div>
-										<button onClick={() => handleEdit(index)}>
-											<i className="fas fa-edit"></i>
-										</button>
-										<button onClick={() => handleDelete(index)}>
-											<i className="fas fa-trash"></i>
-										</button>
-									</div>
-								</>
-							)}
-						</li>
-					))
-				) : (
-					<p></p>
-				)}
-
-				<button
-					className=" pixel-corners-no-border"
-					onClick={() => setShowCompleted(!showCompleted)}>
-					{showCompleted ? 'Show All' : 'Show Completed'}
-				</button>
-			</ul>
-
+		<div className='navigation'>
 			<Link to="/deleted-habits">
-				<button className="btn btn-secondary">View Deleted Habits</button>
-			</Link>
+					<button className="btn btn-secondary pixel-corners-no-border">View Deleted Habits</button>
+				</Link>
 
-			<Link to="/plant-collection">
-				<button className="btn btn-secondary">View Plant Collection</button>
-			</Link>
+				<Link to="/plant-collection">
+					<button className="btn btn-secondary pixel-corners-no-border">View Plant Collection</button>
+				</Link>
+		</div>
+		
+		<div className="habit-container pixel-corners">
 
-			<div className="plant-section">
-				<Plant level={plantLevel} />
+
+				<h1>Habit Tracker</h1>
+				<div className="input-group">
+					<input
+						className="pixel-corners-no-border"
+						type="text"
+						value={input}
+						onChange={handleInput}
+						onKeyDown={handleKeyDown}
+						placeholder="Enter a new habit..."
+					/>
+					<button className=" pixel-corners-no-border" onClick={handleAdd}>
+						Add
+					</button>
+				</div>
+
+				<ul className="habit-list">
+					{filteredList.length > 0 ? (
+						filteredList.map((item, index) => (
+							<li
+								key={item.id}
+								className={`habit-item pixel-corners-no-border ${
+									item.completed ? 'completed' : ''
+								}`}>
+								{editIndex === index ? (
+									<>
+										<input
+											type="text"
+											value={editingValue}
+											onChange={handleEditChange}
+											onKeyDown={(e) => {
+												if (e.key === 'Enter') handleEditSubmit(index);
+											}}
+										/>
+										<button onClick={() => handleEditSubmit(index)}>
+											Save
+										</button>
+									</>
+								) : (
+									<>
+										<input
+											type="checkbox"
+											checked={item.completed}
+											onChange={() => handleComplete(index)}
+										/>
+										<span>{item.text}</span>
+										<div>
+											<button onClick={() => handleEdit(index)}>
+												<i className="fas fa-edit"></i>
+											</button>
+											<button onClick={() => handleDelete(index)}>
+												<i className="fas fa-trash"></i>
+											</button>
+										</div>
+									</>
+								)}
+							</li>
+						))
+					) : (
+						<p></p>
+					)}
+
+					<button
+						className=" pixel-corners-no-border"
+						onClick={() => setShowCompleted(!showCompleted)}>
+						{showCompleted ? 'Show All' : 'Show Completed'}
+					</button>
+				</ul>
+			</div>
+			<div className=''>
+				<div className="plant-section">
+					<Plant level={plantLevel} />
+				</div>
 			</div>
 		</div>
 	);
