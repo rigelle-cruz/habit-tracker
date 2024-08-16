@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
 	addHabitToLocalStorage,
 	getHabitsFromLocalStorage,
@@ -183,6 +184,12 @@ const HabitList = () => {
 					{showCompleted ? 'Show All' : 'Show Completed'}
 				</button>
 			</ul>
+
+			<Link to="/deleted-habits">
+        <button className="btn btn-secondary">
+          View Deleted Habits
+        </button>
+      </Link>
 
 			<div className="plant-section">
 				<Plant level={plantLevel} />
