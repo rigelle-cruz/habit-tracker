@@ -186,10 +186,12 @@ const HabitList = () => {
 			</ul>
 
 			<Link to="/deleted-habits">
-        <button className="btn btn-secondary">
-          View Deleted Habits
-        </button>
-      </Link>
+				<button className="btn btn-secondary">View Deleted Habits</button>
+			</Link>
+
+			<Link to="/plant-collection">
+				<button className="btn btn-secondary">View Plant Collection</button>
+			</Link>
 
 			<div className="plant-section">
 				<Plant level={plantLevel} />
