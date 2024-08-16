@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import './App.css';
-import HabitList from './components/HabitList';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomeScreen from './components/HomeScreen';
+import HabitList from './components/HabitList';
+import DeletedHabit from './components/DeletedHabits';
+import PlantCollection from './components/PlantCollection';
+import { useEffect } from 'react';
 
 function App() {
-	const [showList, setShowList] = useState(false);
-
 	useEffect(() => {
 		const pix = document.getElementsByClassName(
 			'pixel'
@@ -16,13 +16,26 @@ function App() {
 		}
 	}, []);
 
-	const handleAssetClick = () => {
-		setShowList(true);
-	};
-
 	return (
 		<div className="App">
-			{showList ? <HabitList /> : <HomeScreen onItemClick={handleAssetClick} />}
+			<Router>
+				<Routes>
+					<Route
+						path="/"
+						element={
+							<HomeScreen
+								onItemClick={() => (window.location.href = '/habits')}
+							/>
+						}
+					/>
+					<Route path="/habits" element={<HabitList />} />
+
+					<Route path="/deleted-habits" element={<DeletedHabit />} />
+
+					<Route path="/plant-collection" element={<PlantCollection />} />
+				</Routes>
+			</Router>
+
 			<div className="pixel-background">
 				{[...Array(1000)].map((_, index: number) => (
 					<div key={index} className="pixel"></div>
