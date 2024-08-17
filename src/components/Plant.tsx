@@ -3,10 +3,39 @@ type PlantProps = {
 };
 
 const plantAssets = [
-	'public/images/plant/temp-plant-1.jpg',
-	'public/images/plant/temp-plant-2.jpg',
-	'public/images/plant/temp-plant-3.jpg',
-	'public/images/plant/temp-plant-4.jpg',
+	// REMINDER!!
+	// change temp files to actual asset names
+	// example name 'group1-plant-1' and so on
+	[
+		'public/images/plant/temp-plant-1.jpg',
+		'public/images/plant/temp-plant-2.jpg',
+		'public/images/plant/temp-plant-3.jpg',
+		'public/images/plant/temp-plant-4.jpg',
+	],
+	[
+		'public/images/plant/temp-plant-1.jpg',
+		'public/images/plant/temp-plant-2.jpg',
+		'public/images/plant/temp-plant-3.jpg',
+		'public/images/plant/temp-plant-4.jpg',
+	],
+	[
+		'public/images/plant/temp-plant-1.jpg',
+		'public/images/plant/temp-plant-2.jpg',
+		'public/images/plant/temp-plant-3.jpg',
+		'public/images/plant/temp-plant-4.jpg',
+	],
+	[
+		'public/images/plant/temp-plant-1.jpg',
+		'public/images/plant/temp-plant-2.jpg',
+		'public/images/plant/temp-plant-3.jpg',
+		'public/images/plant/temp-plant-4.jpg',
+	],
+	[
+		'public/images/plant/temp-plant-1.jpg',
+		'public/images/plant/temp-plant-2.jpg',
+		'public/images/plant/temp-plant-3.jpg',
+		'public/images/plant/temp-plant-4.jpg',
+	],
 ];
 
 const Plant = ({ level }: PlantProps) => {
