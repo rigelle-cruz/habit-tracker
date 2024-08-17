@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type PlantProps = {
 	level: number;
@@ -54,9 +54,17 @@ const Plant = ({ level }: PlantProps) => {
 
 	const [selectedPlantType, setSelectedPlantType] = useState<number>(0);
 
+	useEffect(() => {
+		const randomPlantType = Math.floor(Math.random() * plantAssets.length);
+		setSelectedPlantType(randomPlantType);
+	}, []);
+
 	return (
 		<div>
-			<img src={plantAssets[level - 1]} alt={`Plant level ${level}`} />
+			<img
+				src={plantAssets[selectedPlantType][level - 1]}
+				alt={`Plant level ${level}`}
+			/>
 		</div>
 	);
 };
