@@ -206,8 +206,7 @@ const HabitList = () => {
 				</ul>
 			</div>
 			<div className="plant-section">
-				<Plant level={plantLevel} />
-				<p>Completed Habits: {completedCount}</p>
+				<Plant level={plantLevel} key={completedCount} />
 			</div>
 		</div>
 	);
