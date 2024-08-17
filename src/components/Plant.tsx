@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 type PlantProps = {
 	level: number;
 };
@@ -45,6 +47,12 @@ const Plant = ({ level }: PlantProps) => {
 	// Whenever the plant reaches level 4, notify the user about the new seed
 	// Whenever a habit is completed, it helps the seed grow into a plant ---> to promote productivity
 	// They can view their collection of plants over time.
+
+	// There are 5 groups of plant assets. Therefore, users get assigned a random plant to grow. So they get a 'new seed'.
+
+	// To assign a user a new plant I randomly assign them a random number which signifies a particular group of assets. Each group are represent a particular plant type
+
+	const [selectedPlantType, setSelectedPlantType] = useState<number>(0);
 
 	return (
 		<div>
