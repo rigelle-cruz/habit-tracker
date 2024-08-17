@@ -55,14 +55,20 @@ const Plant = ({ level }: PlantProps) => {
 	const [selectedPlantType, setSelectedPlantType] = useState<number>(0);
 
 	useEffect(() => {
-		const randomPlantType = Math.floor(Math.random() * plantAssets.length);
-		setSelectedPlantType(randomPlantType);
-	}, []);
+		if (level === 1) {
+			const randomPlantType = Math.floor(Math.random() * plantAssets.length);
+			setSelectedPlantType(randomPlantType);
+		}
+	}, [level]);
 
 	return (
 		<div>
 			<img
-				src={plantAssets[selectedPlantType][level - 1]}
+				src={
+					plantAssets[selectedPlantType][
+						Math.min(level - 1, plantAssets[selectedPlantType].length - 1)
+					]
+				}
 				alt={`Plant level ${level}`}
 			/>
 		</div>
