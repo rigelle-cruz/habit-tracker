@@ -87,30 +87,33 @@ const HabitList = () => {
 	};
 
 	const handleComplete = (index: number) => {
-		// Retrieve active habits from local storage
-		const activeHabits = getHabitsFromLocalStorage();
-
-		// Retrieve deleted habits from local storage
-		const deletedHabits = getDeletedHabitsFromLocalStorage();
-
-		const allHabits = [...activeHabits, ...deletedHabits];
-
 		const updatedHabit = { ...list[index], completed: !list[index].completed };
 		const newList = list.map((item, i) => (i === index ? updatedHabit : item));
 		setList(newList);
 		updateHabitInLocalStorage(updatedHabit);
 
-		const newCompletedCount = allHabits.filter(
-			(habit) => habit.completed
-		).length;
-		setCompletedCount(completedCount);
+		// Retrieve active and deleted habits
+		const activeHabits = getHabitsFromLocalStorage();
+		const deletedHabits = getDeletedHabitsFromLocalStorage();
+		const allHabits = [...activeHabits, ...deletedHabits];
 
-		const newLevel = Math.min(4, Math.floor(newCompletedCount / 10) + 1);
-		setPlantLevel(newLevel);
+		let newCompletedCount = allHabits.filter((habit) => habit.completed).length;
 
-		if (newLevel === 4 && newCompletedCount % 10 === 0) {
-			alert('NEW SEED AVAILABLE!');
+		let newLevel = Math.floor(newCompletedCount / 10) + 1;
+
+		if (newCompletedCount >= 40) {
+			if (newCompletedCount % 40 === 0) {
+				alert('NEW SEED AVAILABLE!!');
+			}
+
+			newCompletedCount = newCompletedCount % 40;
+			newLevel = Math.floor(newCompletedCount / 10) + 1; //
+		} else {
+			newLevel = Math.min(newLevel, 4);
 		}
+
+		setCompletedCount(newCompletedCount);
+		setPlantLevel(newLevel);
 	};
 
 	const filteredList = showCompleted
@@ -118,21 +121,22 @@ const HabitList = () => {
 		: list;
 
 	return (
-	<div>
-
-		<div className='navigation'>
-			<Link to="/deleted-habits">
-					<button className="btn btn-secondary pixel-corners-no-border">View Deleted Habits</button>
+		<div>
+			<div className="navigation">
+				<Link to="/deleted-habits">
+					<button className="btn btn-secondary pixel-corners-no-border">
+						View Deleted Habits
+					</button>
 				</Link>
 
 				<Link to="/plant-collection">
-					<button className="btn btn-secondary pixel-corners-no-border">View Plant Collection</button>
+					<button className="btn btn-secondary pixel-corners-no-border">
+						View Plant Collection
+					</button>
 				</Link>
-		</div>
-		
-		<div className="habit-container pixel-corners">
+			</div>
 
-
+			<div className="habit-container pixel-corners">
 				<h1>Habit Tracker</h1>
 				<div className="input-group">
 					<input
@@ -201,9 +205,10 @@ const HabitList = () => {
 					</button>
 				</ul>
 			</div>
-				<div className="plant-section">
-					<Plant level={plantLevel} />
-				</div>
+			<div className="plant-section">
+				<Plant level={plantLevel} />
+				<p>Completed Habits: {completedCount}</p>
+			</div>
 		</div>
 	);
 };
