@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
 	addHabitToLocalStorage,
+	addPlantToCollection,
 	getHabitsFromLocalStorage,
 	removeHabitFromLocalStorage,
 	updateHabitInLocalStorage,
@@ -97,22 +98,28 @@ const HabitList = () => {
 		const deletedHabits = getDeletedHabitsFromLocalStorage();
 		const allHabits = [...activeHabits, ...deletedHabits];
 
-		let newCompletedCount = allHabits.filter((habit) => habit.completed).length;
+		const newCompletedCount = allHabits.filter(
+			(habit) => habit.completed
+		).length;
 
-		let newLevel = Math.floor(newCompletedCount / 10) + 1;
+		// Calculate the plant type and level
+		const milestone = 40;
+		const remainder = newCompletedCount % milestone;
+		const plantTypeIndex = Math.floor(newCompletedCount / milestone) % 5;
 
-		if (newCompletedCount >= 40) {
-			if (newCompletedCount % 40 === 0) {
-				alert('NEW SEED AVAILABLE!!');
-			}
+		let newLevel = Math.floor(remainder / 10) + 1;
+		newLevel = Math.min(newLevel, 4);
 
-			newCompletedCount = newCompletedCount % 40;
-			newLevel = Math.floor(newCompletedCount / 10) + 1; //
-		} else {
-			newLevel = Math.min(newLevel, 4);
+		if (remainder === 0 && newCompletedCount > 0) {
+			alert('NEW SEED AVAILABLE!!');
+
+			const imagePath = `public/images/plant/plant-type-${
+				plantTypeIndex + 1
+			}-4.jpg`;
+			addPlantToCollection(imagePath);
 		}
 
-		setCompletedCount(newCompletedCount);
+		setCompletedCount(remainder);
 		setPlantLevel(newLevel);
 	};
 
