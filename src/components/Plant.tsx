@@ -5,9 +5,6 @@ type PlantProps = {
 };
 
 const plantAssets = [
-	// REMINDER!!
-	// change temp files to actual asset names
-	// example name 'group1-plant-1' and so on
 	[
 		'public/images/plant/plant-type-1-1.jpg',
 		'public/images/plant/plant-type-1-2.jpg',
