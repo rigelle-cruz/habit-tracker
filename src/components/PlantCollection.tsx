@@ -1,7 +1,16 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getCompletedPlants } from '../models/localStorageUtils';
 
 const PlantCollection = () => {
 	// displays all the fully grown plants
+
+	const [plantCollection, setPlantCollection] = useState<string[]>([]);
+
+	useEffect(() => {
+		const savedPlants = getCompletedPlants(); // this retrieves the plant collection from localStorage
+		setPlantCollection(savedPlants); //this stores the retrieved plant collection
+	}, []); //Empty array to insert the retrieved data
 
 	return (
 		<div>
