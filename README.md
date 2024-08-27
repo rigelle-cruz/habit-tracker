@@ -20,3 +20,14 @@ I decided to build this react app as I was looking for a habit tracker that comb
 - I chose to incorporate LocalStorage to save the list in the browser. This enables users to view their personal list. 
 - Used zod to define type
 ...
+
+### Plant.tsx
+#### Feature:
+- Users get assigned a random plant seed.
+- Every 10 habit they complete, increment the plant's level
+- Pass the current level and image source according to the level
+- Whenever the plant reaches level 4, notify the user about the new seed
+- Whenever a habit is completed, it helps the seed grow into a plant ---> to promote productivity
+- They can view their collection of plants over time.
+- There are 5 groups of plant assets. Therefore, users get assigned a random plant to grow. So they get a 'new seed'.
+- To assign a user a new plant I randomly assign them a random number which signifies a particular group of assets. Each group are represent a particular plant type
