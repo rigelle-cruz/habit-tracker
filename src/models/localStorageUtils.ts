@@ -5,7 +5,6 @@ type Habit = {
 };
 
 const LOCAL_STORAGE_KEY = 'habitTrackerAppList';
-const COMPLETED_HABITS_KEY = 'completedHabits';
 const COMPLETED_PLANTS_KEY = 'completedPlants';
 
 // To get and parse habits from local storage
@@ -43,28 +42,6 @@ export function removeHabitFromLocalStorage(habitId: string): void {
 	setHabitsInLocalStorage(habits);
 }
 
-// To clear all habits from local storage
-export function clearHabitsInLocalStorage(): void {
-	setHabitsInLocalStorage([]);
-}
-
-// To get the number of completed habits from local storage
-export function getCompletedHabits(): number {
-	const count = localStorage.getItem(COMPLETED_HABITS_KEY);
-	return count ? parseInt(count, 10) : 0;
-}
-
-// To update the number of completed habits in local storage
-export function updateCompletedHabits(count: number): void {
-	localStorage.setItem(COMPLETED_HABITS_KEY, count.toString());
-}
-
-// To get the list of completed plants from local storage
-export function getCompletedPlants(): string[] {
-	const plants = localStorage.getItem(COMPLETED_PLANTS_KEY);
-	return plants ? JSON.parse(plants) : [];
-}
-
 // To add a plant image path to the completed plants list in local storage
 export function addPlantToCollection(imagePath: string): void {
 	const completedPlants = getCompletedPlants();
@@ -72,4 +49,10 @@ export function addPlantToCollection(imagePath: string): void {
 		completedPlants.push(imagePath);
 		localStorage.setItem(COMPLETED_PLANTS_KEY, JSON.stringify(completedPlants));
 	}
+}
+
+// To get the list of completed plants from local storage
+export function getCompletedPlants(): string[] {
+	const plants = localStorage.getItem(COMPLETED_PLANTS_KEY);
+	return plants ? JSON.parse(plants) : [];
 }
