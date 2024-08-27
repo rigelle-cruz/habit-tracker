@@ -115,7 +115,7 @@ const HabitList = () => {
 
 			const imagePath = `public/images/plant/plant-type-${
 				plantTypeIndex + 1
-			}-4.jpg`;
+			}-4.jpg`; // to ensure that I retrieve the right plant level I hard coded number '4' as it's the final level of the plant
 			addPlantToCollection(imagePath);
 		}
 
