@@ -15,7 +15,7 @@ const PlantCollection = () => {
 	return (
 		<div>
 			<h2>VIEW ALL PLANT COLLECTION</h2>
-			<ul>
+			<ul className="plant-collection">
 				{plantCollection.map((plantImage, index) => (
 					<li key={index}>
 						<img src={plantImage} alt={`Plant ${index + 1}`} />
