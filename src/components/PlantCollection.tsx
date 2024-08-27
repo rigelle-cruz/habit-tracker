@@ -9,12 +9,14 @@ const PlantCollection = () => {
 
 	useEffect(() => {
 		const savedPlants = getCompletedPlants(); // this retrieves the plant collection from localStorage
+		console.log('Retrieved plant collection from localStorage:', savedPlants);
 		setPlantCollection(savedPlants); //this stores the retrieved plant collection
 	}, []); //Empty array to insert the retrieved data
 
 	return (
 		<div>
 			<h2>VIEW ALL PLANT COLLECTION</h2>
+
 			<Link to="/habits">
 				<button className="btn btn-secondary pixel-corners-no-border">
 					View List!
