@@ -7,7 +7,7 @@ const PlantCollection = () => {
 
 	useEffect(() => {
 		const savedPlants = getCompletedPlants();
-		setPlantCollection(savedPlants); //
+		setPlantCollection(savedPlants);
 	}, []);
 
 	return (
