@@ -4,6 +4,12 @@ import {getDeletedHabitsFromLocalStorage} from '../models/deletedHabitsUtils';
 
 const DeletedHabits = () => {
 	const [deletedHabits, setDeletedHabits] = useState<string[]>([]);
+
+	useEffect(() => {
+		const savedDeletedHabits = getDeletedHabitsFromLocalStorage();
+		console.log(savedDeletedHabits)
+	}, []);
+
 	return (
 		<div>
 			<h2>LIST OF DELETED HABITS HERE!</h2>
