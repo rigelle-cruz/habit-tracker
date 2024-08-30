@@ -33,3 +33,16 @@ I decided to build this react app as I was looking for a habit tracker that comb
 - They can view their collection of plants over time.
 - There are 5 groups of plant assets. Therefore, users get assigned a random plant to grow. So they get a 'new seed'.
 - To assign a user a new plant I randomly assign them a random number which signifies a particular group of assets. Each group are represent a particular plant type
+
+### PlantCollection.tsx
+#### Feature:
+- Displays all the fully grown plants
+- I retrieve a list of image urls to display the level 4 plants
+
+  ```js
+	  useEffect(() => {
+		const savedPlants = getCompletedPlants(); // Retrieves the plant collection from localStorage
+		setPlantCollection(savedPlants); // Stores the retrieved plant collection
+	  }, []); // An empty array to insert the retrieved data
+  ```
+
