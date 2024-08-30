@@ -14,6 +14,13 @@ const DeletedHabits = () => {
 	return (
 		<div>
 			<h2>LIST OF DELETED HABITS HERE!</h2>
+			<ul>
+				{deletedHabits.map((habit) => (
+					<li key={habit.id}>
+						{habit.text} 
+					</li>
+				))}
+			</ul>
 			<Link to="/habits">
 				<button className="btn btn-secondary pixel-corners-no-border">
 					View List!
