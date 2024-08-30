@@ -132,6 +132,11 @@ margin: 1rem;
   list-style-type: none;
 }
 
+.deleted-habits {
+  list-style-type: none;
+}
+
+
 .pixel-corners,
 .pixel-corners--wrapper {
   clip-path: polygon(0px calc(100% - 20px),

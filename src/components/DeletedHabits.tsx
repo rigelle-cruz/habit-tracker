@@ -1,24 +1,25 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {getDeletedHabitsFromLocalStorage, DeletedHabit} from '../models/deletedHabitsUtils';
+import {
+	getDeletedHabitsFromLocalStorage,
+	DeletedHabit,
+} from '../models/deletedHabitsUtils';
 
 const DeletedHabits = () => {
 	const [deletedHabits, setDeletedHabits] = useState<DeletedHabit[]>([]);
 
 	useEffect(() => {
 		const savedDeletedHabits = getDeletedHabitsFromLocalStorage();
-		console.log(savedDeletedHabits)
+		console.log(savedDeletedHabits);
 		setDeletedHabits(savedDeletedHabits);
 	}, []);
 
 	return (
 		<div>
 			<h2>LIST OF DELETED HABITS HERE!</h2>
-			<ul>
+			<ul className="deleted-habits">
 				{deletedHabits.map((habit) => (
-					<li key={habit.id}>
-						{habit.text} 
-					</li>
+					<li key={habit.id}>{habit.text}</li>
 				))}
 			</ul>
 			<Link to="/habits">
