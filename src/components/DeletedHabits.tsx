@@ -1,6 +1,9 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import {getDeletedHabitsFromLocalStorage} from '../models/deletedHabitsUtils';
 
 const DeletedHabits = () => {
+	const [deletedHabits, setDeletedHabits] = useState<string[]>([]);
 	return (
 		<div>
 			<h2>LIST OF DELETED HABITS HERE!</h2>
