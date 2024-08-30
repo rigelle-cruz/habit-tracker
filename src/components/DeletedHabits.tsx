@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {getDeletedHabitsFromLocalStorage} from '../models/deletedHabitsUtils';
+import {getDeletedHabitsFromLocalStorage, DeletedHabit} from '../models/deletedHabitsUtils';
 
 const DeletedHabits = () => {
-	const [deletedHabits, setDeletedHabits] = useState<string[]>([]);
+	const [deletedHabits, setDeletedHabits] = useState<DeletedHabit[]>([]);
 
 	useEffect(() => {
 		const savedDeletedHabits = getDeletedHabitsFromLocalStorage();
 		console.log(savedDeletedHabits)
+		setDeletedHabits(savedDeletedHabits);
 	}, []);
 
 	return (
