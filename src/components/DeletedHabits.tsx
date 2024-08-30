@@ -10,7 +10,6 @@ const DeletedHabits = () => {
 
 	useEffect(() => {
 		const savedDeletedHabits = getDeletedHabitsFromLocalStorage();
-		console.log(savedDeletedHabits);
 		setDeletedHabits(savedDeletedHabits);
 	}, []);
 
