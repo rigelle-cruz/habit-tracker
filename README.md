@@ -47,3 +47,7 @@ I decided to build this react app as I was looking for a habit tracker that comb
 	  }, []); // An empty array to insert the retrieved data
   ```
 
+
+### localStorageUtils.ts
+
+- Contains functions that handles data in the local storage
