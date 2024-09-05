@@ -51,3 +51,11 @@ I decided to build this react app as I was looking for a habit tracker that comb
 ### localStorageUtils.ts
 
 - Contains functions that handles data in the local storage
+
+### HabitList.tsx
+  ```js
+const imagePath = `public/images/plant/plant-type-${
+				plantTypeIndex + 1
+			}-4.jpg`; // to ensure that I retrieve the right plant level I hard coded number '4' as it's the final level of the plant
+
+	```
