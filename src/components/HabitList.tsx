@@ -11,6 +11,7 @@ import {
   addPlantToCollection,
   getHabitsFromLocalStorage,
   removeHabitFromLocalStorage,
+  setHabitsInLocalStorage,
   updateHabitInLocalStorage,
 } from '../models/localStorageUtils.ts'
 import { HabitSchema, Habit } from '../models/habitSchema.ts'
@@ -128,6 +129,7 @@ const HabitList = () => {
     setPlantLevel(newLevel)
   }
 
+  // Handles Drag and Drop functionality
   const onDragEnd = (result: DropResult) => {
     const { destination, source } = result
     if (!destination) return
@@ -136,9 +138,11 @@ const HabitList = () => {
     const [removed] = updatedList.splice(source.index, 1)
     updatedList.splice(destination.index, 0, removed)
 
+    // Sets new state
     setList(updatedList)
 
-    updatedList.forEach((habit) => updateHabitInLocalStorage(habit))
+    // Stores reordered list in local storage
+    setHabitsInLocalStorage(updatedList)
   }
 
   const filteredList = showCompleted
