@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
+  DragDropContext,
+  Droppable,
+  Draggable,
+  DropResult,
+} from '@hello-pangea/dnd'
+import {
   addHabitToLocalStorage,
   addPlantToCollection,
   getHabitsFromLocalStorage,
@@ -28,7 +34,6 @@ const HabitList = () => {
     const parsedHabits = HabitSchema.array().safeParse(savedHabits)
 
     if (parsedHabits.success) {
-      console.log('Loaded from localStorage:', parsedHabits.data)
       setList(parsedHabits.data)
     } else {
       console.error(
@@ -115,12 +120,25 @@ const HabitList = () => {
 
       const imagePath = `public/images/plant/plant-type-${
         plantTypeIndex + 1
-      }-4.jpg` // to ensure that I retrieve the right plant level I hard coded number '4' as it's the final level of the plant
+      }-4.jpg`
       addPlantToCollection(imagePath)
     }
 
     setCompletedCount(remainder)
     setPlantLevel(newLevel)
+  }
+
+  const onDragEnd = (result: DropResult) => {
+    const { destination, source } = result
+    if (!destination) return
+
+    const updatedList = Array.from(list)
+    const [removed] = updatedList.splice(source.index, 1)
+    updatedList.splice(destination.index, 0, removed)
+
+    setList(updatedList)
+
+    updatedList.forEach((habit) => updateHabitInLocalStorage(habit))
   }
 
   const filteredList = showCompleted
@@ -154,66 +172,80 @@ const HabitList = () => {
             onKeyDown={handleKeyDown}
             placeholder="Enter a new habit..."
           />
-          <button className=" pixel-corners-no-border" onClick={handleAdd}>
+          <button className="pixel-corners-no-border" onClick={handleAdd}>
             Add
           </button>
         </div>
 
-        <ul className="habit-list">
-          {filteredList.length > 0 ? (
-            filteredList.map((item, index) => (
-              <li
-                key={item.id}
-                className={`habit-item pixel-corners-no-border ${
-                  item.completed ? 'completed' : ''
-                }`}
+        <DragDropContext onDragEnd={onDragEnd}>
+          <Droppable droppableId="habits">
+            {(provided) => (
+              <ul
+                className="habit-list"
+                {...provided.droppableProps}
+                ref={provided.innerRef}
               >
-                {editIndex === index ? (
-                  <>
-                    <input
-                      type="text"
-                      value={editingValue}
-                      onChange={handleEditChange}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter') handleEditSubmit(index)
-                      }}
-                    />
-                    <button onClick={() => handleEditSubmit(index)}>
-                      Save
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <input
-                      type="checkbox"
-                      checked={item.completed}
-                      onChange={() => handleComplete(index)}
-                    />
-                    <span>{item.text}</span>
-                    <div>
-                      <button onClick={() => handleEdit(index)}>
-                        <i className="fas fa-edit"></i>
-                      </button>
-                      <button onClick={() => handleDelete(index)}>
-                        <i className="fas fa-trash"></i>
-                      </button>
-                    </div>
-                  </>
-                )}
-              </li>
-            ))
-          ) : (
-            <p></p>
-          )}
+                {filteredList.map((item, index) => (
+                  <Draggable key={item.id} draggableId={item.id} index={index}>
+                    {(provided) => (
+                      <li
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        className={`habit-item pixel-corners-no-border ${
+                          item.completed ? 'completed' : ''
+                        }`}
+                      >
+                        {editIndex === index ? (
+                          <>
+                            <input
+                              type="text"
+                              value={editingValue}
+                              onChange={handleEditChange}
+                              onKeyDown={(e) => {
+                                if (e.key === 'Enter') handleEditSubmit(index)
+                              }}
+                            />
+                            <button onClick={() => handleEditSubmit(index)}>
+                              Save
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <input
+                              type="checkbox"
+                              checked={item.completed}
+                              onChange={() => handleComplete(index)}
+                            />
+                            <span>{item.text}</span>
+                            <div>
+                              <button onClick={() => handleEdit(index)}>
+                                <i className="fas fa-edit"></i>
+                              </button>
+                              <button onClick={() => handleDelete(index)}>
+                                <i className="fas fa-trash"></i>
+                              </button>
+                            </div>
+                          </>
+                        )}
+                      </li>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </ul>
+            )}
+          </Droppable>
+        </DragDropContext>
 
-          <button
-            className=" pixel-corners-no-border"
-            onClick={() => setShowCompleted(!showCompleted)}
-          >
-            {showCompleted ? 'Show All' : 'Show Completed'}
-          </button>
-        </ul>
+        <button
+          className="pixel-corners-no-border"
+          onClick={() => setShowCompleted(!showCompleted)}
+        >
+          {showCompleted ? 'Show All' : 'Show Completed'}
+        </button>
       </div>
+
       <div className="plant-section">
         <Plant level={plantLevel} key={completedCount} />
       </div>
