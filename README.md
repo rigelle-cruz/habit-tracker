@@ -20,12 +20,14 @@ I decided to build this react app as I was looking for a habit tracker that comb
 
 ## Technical Process:
 
-- I chose to incorporate LocalStorage to save the list in the browser. This enables users to view their personal list. 
+- I chose to incorporate LocalStorage to save the list in the browser. This enables users to view their personal list.
 - Used zod to define type
-...
+  ...
 
 ### Plant.tsx
+
 #### Feature:
+
 - Users get assigned a random plant seed.
 - Every 10 habit they complete, increment the plant's level
 - Pass the current level and image source according to the level
@@ -36,26 +38,31 @@ I decided to build this react app as I was looking for a habit tracker that comb
 - To assign a user a new plant I randomly assign them a random number which signifies a particular group of assets. Each group are represent a particular plant type
 
 ### PlantCollection.tsx
+
 #### Feature:
+
 - Displays all the fully grown plants
 - I retrieve a list of image urls to display the level 4 plants
 
   ```js
-	  useEffect(() => {
-		const savedPlants = getCompletedPlants(); // Retrieves the plant collection from localStorage
-		setPlantCollection(savedPlants); // Stores the retrieved plant collection
-	  }, []); // An empty array to insert the retrieved data
+  useEffect(() => {
+    const savedPlants = getCompletedPlants() // Retrieves the plant collection from localStorage
+    setPlantCollection(savedPlants) // Stores the retrieved plant collection
+  }, []) // An empty array to insert the retrieved data
   ```
-
 
 ### localStorageUtils.ts
 
 - Contains functions that handles data in the local storage
 
 ### HabitList.tsx
-  ```js
+
+````js
 const imagePath = `public/images/plant/plant-type-${
 				plantTypeIndex + 1
 			}-4.jpg`; // to ensure that I retrieve the right plant level I hard coded number '4' as it's the final level of the plant
 
 	```
+````
+
+- I implemented @hello-pangea/dnd to handle the drag and drop functionality of the habit tracker
