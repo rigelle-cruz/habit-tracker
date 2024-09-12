@@ -10,7 +10,7 @@ I decided to build this react app as I was looking for a habit tracker that comb
 
 - Ability to cross out completed habit ✅
 - Be able to upload images
-- Re-organise habits by desired order
+- Re-order habits by desired order ✅
 - Can set up reminder/notification for a habit
 - Can set up a focused timer for a specific habit
 - See your progress through an interactive plant that grows with you! The more you complete your tasks the plant flourishes! ✅
@@ -66,3 +66,21 @@ const imagePath = `public/images/plant/plant-type-${
 ````
 
 - I implemented @hello-pangea/dnd to handle the drag and drop functionality of the habit tracker
+
+```js
+// Handles Drag and Drop functionality
+const onDragEnd = (result: DropResult) => {
+  const { destination, source } = result
+  if (!destination) return
+
+  const updatedList = Array.from(list)
+  const [removed] = updatedList.splice(source.index, 1)
+  updatedList.splice(destination.index, 0, removed)
+
+  // Sets new state
+  setList(updatedList)
+
+  // Stores reordered list in local storage
+  setHabitsInLocalStorage(updatedList)
+}
+```

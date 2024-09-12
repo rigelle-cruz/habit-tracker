@@ -138,10 +138,8 @@ const HabitList = () => {
     const [removed] = updatedList.splice(source.index, 1)
     updatedList.splice(destination.index, 0, removed)
 
-    // Sets new state
     setList(updatedList)
 
-    // Stores reordered list in local storage
     setHabitsInLocalStorage(updatedList)
   }
 
