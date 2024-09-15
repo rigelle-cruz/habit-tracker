@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import {
   getDeletedHabitsFromLocalStorage,
   DeletedHabit,
+  recoverDeletedHabitToActiveList,
 } from '../models/deletedHabitsUtils'
 
 const DeletedHabits = () => {
@@ -13,7 +14,12 @@ const DeletedHabits = () => {
     setDeletedHabits(savedDeletedHabits)
   }, [])
 
-  const recoverHabit = () => {}
+  const recoverHabit = (habit: DeletedHabit) => {
+    recoverDeletedHabitToActiveList(habit)
+    setDeletedHabits((prevHabits) =>
+      prevHabits.filter((h) => h.id !== habit.id)
+    )
+  }
 
   return (
     <div>
