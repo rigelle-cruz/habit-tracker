@@ -84,3 +84,30 @@ const onDragEnd = (result: DropResult) => {
   setHabitsInLocalStorage(updatedList)
 }
 ```
+
+### deletedHabitsUtils.ts
+
+```js
+export function recoverDeletedHabitToActiveList(habit: DeletedHabit): void {
+  // Get deleted habits from local storage
+  const deletedHabits = getDeletedHabitsFromLocalStorage()
+
+  // Remove the habit from the deleted list
+  const updatedDeletedHabits = deletedHabits.filter((h) => h.id !== habit.id)
+  setDeletedHabitsInLocalStorage(updatedDeletedHabits)
+
+  // Convert the DeletedHabit type to the Habit type if needed
+  const activeHabit = {
+    id: habit.id,
+    text: habit.text,
+    completed: habit.completed,
+  }
+
+  // Get active habits from local storage
+  const activeHabits = getHabitsFromLocalStorage()
+
+  // Add the habit to the active habits list
+  activeHabits.push(activeHabit)
+  setHabitsInLocalStorage(activeHabits)
+}
+```
