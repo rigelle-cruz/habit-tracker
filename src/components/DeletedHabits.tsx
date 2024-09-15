@@ -1,33 +1,43 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import {
-	getDeletedHabitsFromLocalStorage,
-	DeletedHabit,
-} from '../models/deletedHabitsUtils';
+  getDeletedHabitsFromLocalStorage,
+  DeletedHabit,
+} from '../models/deletedHabitsUtils'
 
 const DeletedHabits = () => {
-	const [deletedHabits, setDeletedHabits] = useState<DeletedHabit[]>([]);
+  const [deletedHabits, setDeletedHabits] = useState<DeletedHabit[]>([])
 
-	useEffect(() => {
-		const savedDeletedHabits = getDeletedHabitsFromLocalStorage();
-		setDeletedHabits(savedDeletedHabits);
-	}, []);
+  useEffect(() => {
+    const savedDeletedHabits = getDeletedHabitsFromLocalStorage()
+    setDeletedHabits(savedDeletedHabits)
+  }, [])
 
-	return (
-		<div>
-			<h2>LIST OF DELETED HABITS HERE!</h2>
-			<ul className="deleted-habits">
-				{deletedHabits.map((habit) => (
-					<li key={habit.id}>{habit.text}</li>
-				))}
-			</ul>
-			<Link to="/habits">
-				<button className="btn btn-secondary pixel-corners-no-border">
-					View List!
-				</button>
-			</Link>
-		</div>
-	);
-};
+  const recoverHabit = () => {}
 
-export default DeletedHabits;
+  return (
+    <div>
+      <h2>Deleted Habits</h2>
+      <ul className="deleted-habits">
+        {deletedHabits.map((habit) => (
+          <li key={habit.id} className="deleted-habit-item">
+            <span>{habit.text}</span>
+            <button
+              className="btn btn-primary pixel-corners-no-border"
+              onClick={() => recoverHabit(habit)}
+            >
+              Recover
+            </button>
+          </li>
+        ))}
+      </ul>
+      <Link to="/habits">
+        <button className="btn btn-secondary pixel-corners-no-border">
+          View List!
+        </button>
+      </Link>
+    </div>
+  )
+}
+
+export default DeletedHabits
