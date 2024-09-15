@@ -16,7 +16,7 @@ I decided to build this react app as I was looking for a habit tracker that comb
 - See your progress through an interactive plant that grows with you! The more you complete your tasks the plant flourishes! ✅
 - View Plant Collection ✅
 - Be able to view deleted habits ✅
-- Be able to recover deleted habits or delete them permanently (additional feature: should automatically delete habits after 30 days)
+- Be able to recover deleted habits ✅
 
 ## Technical Process:
 
