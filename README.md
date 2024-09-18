@@ -17,6 +17,7 @@ I decided to build this react app as I was looking for a habit tracker that comb
 - View Plant Collection ✅
 - Be able to view deleted habits ✅
 - Be able to recover deleted habits ✅
+- Responsive across mobile, tablet and desktop view ✅
 
 ## Technical Process:
 
