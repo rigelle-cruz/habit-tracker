@@ -241,7 +241,7 @@ const HabitList = () => {
         </DragDropContext>
 
         <button
-          className="pixel-corners-no-border"
+          className="pixel-corners-no-border completed-button"
           onClick={() => setShowCompleted(!showCompleted)}
         >
           {showCompleted ? 'Show All' : 'Show Completed'}
