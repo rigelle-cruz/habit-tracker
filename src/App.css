@@ -134,7 +134,7 @@ button:hover {
 .deleted-habits {
   list-style-type: none;
   padding: 0;
-  margin-bottom: 100px;
+  margin-bottom: 10px;
 }
 
 .deleted-habit-item {
@@ -143,6 +143,7 @@ button:hover {
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid #ccc;
+  overflow-y: auto;
 }
 
 .deleted-habit-item button {
