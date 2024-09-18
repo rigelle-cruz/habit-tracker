@@ -10,18 +10,18 @@
   src: url(/font/Silkscreen/slkscr.ttf);
 }
 
-html, body {
-	margin: 0;
-	padding: 0;
-	height: 100%;
-	overflow: hidden;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 .App {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 body {
@@ -41,12 +41,12 @@ button:focus-visible {
 .clickable-asset {
   cursor: pointer;
   width: 200px;
-	height: auto;
-	transition: transform 0.2s;
+  height: auto;
+  transition: transform 0.2s;
 }
 
 .clickable-asset:hover {
-	transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .pixel-background {
