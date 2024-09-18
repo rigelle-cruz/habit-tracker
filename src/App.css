@@ -13,11 +13,13 @@
 .habit-container {
   background-color: var(--primary-color);
   padding: 2rem;
+  padding-bottom: 4rem; /* Add bottom padding to make space for the button */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
   min-width: 300px;
-  max-height: 80vh;
+  max-height: 60vh;
+  max-width: 100%;
 }
 
 .input-group {
@@ -41,7 +43,6 @@ input[type='text'] {
   text-decoration: line-through;
   text-decoration-thickness: 3px;
   color: gray;
-  position: relative;
 }
 
 .completed::after {
@@ -69,12 +70,20 @@ button:hover {
   background-color: #708294a6;
 }
 
+.completed-button {
+  position: absolute;
+  top: 1rem;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1;
+}
+
 .habit-list {
   list-style-type: none;
   padding: 0;
   margin: 0;
   overflow-y: auto;
-  max-height: 60vh;
+  max-height: 40vh;
   overflow-x: hidden;
 }
 
@@ -148,6 +157,76 @@ button:hover {
 
 .deleted-habit-item button {
   margin-left: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .habit-container {
+    padding: 1rem;
+    padding-bottom: 4rem;
+  }
+
+  .navigation {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .input-group {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .completed-button {
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .habit-list {
+    max-height: 45vh;
+  }
+
+  .habit-item {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .habit-item input[type='text'] {
+    width: auto;
+  }
+
+  .habit-item button {
+    margin-left: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .habit-container {
+    padding: 0.5rem;
+    padding-bottom: 4rem;
+  }
+
+  .input-group {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .habit-item {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .habit-item input[type='text'] {
+    width: auto;
+  }
+
+  .habit-item button {
+    margin-left: 0.5rem;
+  }
+
+  .habit-list {
+    max-height: 40vh;
+  }
 }
 
 .pixel-corners,
