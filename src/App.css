@@ -13,7 +13,7 @@
 .habit-container {
   background-color: var(--primary-color);
   padding: 2rem;
-  padding-bottom: 4rem; /* Add bottom padding to make space for the button */
+  padding-bottom: 4rem;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
@@ -72,9 +72,9 @@ button:hover {
 
 .completed-button {
   position: absolute;
-  top: 1rem;
   bottom: 1rem;
-  right: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1;
 }
 
