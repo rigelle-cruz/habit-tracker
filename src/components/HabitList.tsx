@@ -119,9 +119,7 @@ const HabitList = () => {
     if (remainder === 0 && newCompletedCount > 0) {
       alert('NEW SEED AVAILABLE!!')
 
-      const imagePath = `public/images/plant/plant-type-${
-        plantTypeIndex + 1
-      }-4.png`
+      const imagePath = `/images/plant/plant-type-${plantTypeIndex + 1}-4.png`
       addPlantToCollection(imagePath)
     }
 
