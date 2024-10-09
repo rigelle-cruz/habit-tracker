@@ -6,10 +6,10 @@ type PlantProps = {
 
 const plantAssets = [
   [
-    '/images/plant/plant-type-1-1.jpg',
-    '/images/plant/plant-type-1-2.jpg',
-    '/images/plant/plant-type-1-3.jpg',
-    '/images/plant/plant-type-1-4.jpg',
+    '/images/plant/plant-type-1-1.png',
+    '/images/plant/plant-type-1-2.png',
+    '/images/plant/plant-type-1-3.png',
+    '/images/plant/plant-type-1-4.png',
   ],
   [
     '/images/plant/plant-type-2-1.jpg',
