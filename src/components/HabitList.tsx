@@ -121,7 +121,7 @@ const HabitList = () => {
 
       const imagePath = `public/images/plant/plant-type-${
         plantTypeIndex + 1
-      }-4.jpg`
+      }-4.png`
       addPlantToCollection(imagePath)
     }
 
