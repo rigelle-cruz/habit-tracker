@@ -6,6 +6,9 @@ This is a habit tracker app that allows users to organise and efficiently track 
 
 I decided to build this react app as I was looking for a habit tracker that combines all the features I want in one application. So I decided to tailor this app to my personal needs and desired aesthetic. I wanted a fun way for people to list down there habits to appear more like a game. So they are able to grow a plant everytime they complete a habit. Therefore, users will be encouraged to complete their habits.
 
+All designs and plant assets were designed and drawn by me
+<img src="public/images/original-image.GIF" alt="plant-image" width="100" height="100">
+
 ## Features:
 
 - Ability to cross out completed habit ✅
