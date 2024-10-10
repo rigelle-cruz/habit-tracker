@@ -8,6 +8,7 @@ I decided to build this react app as I was looking for a habit tracker that comb
 
 All designs and plant assets were designed and drawn by me
 <img src="public/images/original-image.GIF" alt="plant-image" width="100" height="100">
+<img src="public/images/original-image-2.GIF" alt="plant-image" width="100" height="100">
 
 ## Features:
 
