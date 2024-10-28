@@ -37,9 +37,12 @@ button:hover {
 /* ========== 2. Navigation ========== */
 .navigation {
   display: flex;
+  justify-content: center; 
+  align-items: center; 
   gap: 20px;
-  margin-bottom: 1rem;
+  margin: 1rem auto; 
 }
+
 
 /* ========== 3. Habit Tracker ========== */
 
@@ -65,10 +68,7 @@ button:hover {
 }
 
 .completed-button {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-top: 10px;
 }
 
 /* ========== 4. Input Group ========== */
@@ -157,6 +157,10 @@ button:hover, .completed-button:hover {
 .plant-section img {
   max-width: 100%;
   height: auto;
+}
+
+.plant-container {
+  background-color: var(--secondary-color); 
 }
 
 .plant-collection {

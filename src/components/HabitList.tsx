@@ -248,7 +248,9 @@ const HabitList = () => {
 				</div>
 
 				<div className="plant-section pixel-corners">
-					<Plant level={plantLevel} key={completedCount} />
+					<div className="plant-container pixel-corners-no-border">
+						<Plant level={plantLevel} key={completedCount} />
+					</div>
 				</div>
 			</div>
 		</div>
