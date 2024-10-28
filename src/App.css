@@ -37,7 +37,6 @@ button:hover {
 /* ========== 2. Navigation ========== */
 .navigation {
   display: flex;
-  flex-direction: row;
   gap: 20px;
   margin-bottom: 1rem;
 }
@@ -46,24 +45,30 @@ button:hover {
 
 .habit-tracker-container {
   display: flex;
-  align-items: flex-start;
+  flex-direction: row;
   justify-content: center;
-  gap: 1rem; 
-  max-width: 90%; 
+  gap: 1rem;
+  max-width: 100%;
   margin: 0 auto;
-  flex-wrap: wrap; 
 }
 
-.habit-container {
+.habit-container,
+.plant-section {
   background-color: var(--primary-color);
   padding: 2rem;
-  padding-bottom: 4rem; 
+  padding-bottom: 4rem;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
   min-width: 300px;
-  max-height: 60vh;
   max-width: 100%;
+}
+
+.completed-button {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* ========== 4. Input Group ========== */
@@ -85,26 +90,13 @@ input[type='text'] {
 }
 
 /* ========== 5. Buttons ========== */
-.completed-button {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
-}
-
-button {
-  border: none;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
+button, .completed-button {
   font-family: 'Silkscreen', sans-serif;
-  background-color: #708294;
   color: var(--primary-color);
-  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+button:hover, .completed-button:hover {
   background-color: #708294a6;
 }
 
@@ -115,14 +107,12 @@ button:hover {
   margin: 0;
   overflow-y: auto;
   max-height: 40vh;
-  overflow-x: hidden;
 }
 
 .habit-item {
   background-color: var(--secondary-color);
   padding: 0.75rem;
   margin-bottom: 0.5rem;
-  margin-right: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -138,41 +128,34 @@ button:hover {
 .habit-item button {
   background: none;
   cursor: pointer;
-  color: var(--text-color);
+  color: #708294;
+  outline: none;
   padding: 0;
   margin-left: 0.5rem;
 }
 
-.habit-item button {
-  color: #708294;
-  outline: none;
-}
-
 .habit-item button:hover {
   color: #708294a6;
-  outline: none;
 }
 
 .habit-item button:last-child {
   color: #ff6f61;
-  outline: none;
 }
 
 .habit-item button:last-child:hover {
   color: #e45b54;
-  outline: none;
 }
 
 /* ========== 7. Plant Section ========== */
 .plant-section {
-  flex: 1 1 30%; 
+  max-width: 150px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
 }
 
 .plant-section img {
-  max-width: 50%;
+  max-width: 100%;
   height: auto;
 }
 
@@ -193,17 +176,11 @@ button:hover {
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid #ccc;
-  overflow-y: auto;
-}
-
-.deleted-habit-item button {
-  margin-left: 10px;
 }
 
 /* ========== 9. Completed State ========== */
 .completed {
   text-decoration: line-through;
-  text-decoration-thickness: 3px;
   color: gray;
 }
 
@@ -219,18 +196,16 @@ button:hover {
 
 /* ========== 10. Media Queries ========== */
 
-/* Medium Screens */
 @media (max-width: 768px) {
-  .habit-container {
+  .habit-container, .plant-section {
     padding: 1rem;
-    padding-bottom: 4rem;
   }
 
   .habit-tracker-container {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .habit-container, .plant-section {
     flex: 1 1 100%;
   }
@@ -245,65 +220,25 @@ button:hover {
     gap: 0.5rem;
   }
 
-  .completed-button {
-    bottom: 0.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
   .habit-list {
     max-height: 45vh;
   }
-
-  .habit-item {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .habit-item input[type='text'] {
-    width: auto;
-  }
-
-  .habit-item button {
-    margin-left: 0.5rem;
-  }
-
-  .input-group {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-
-  .input-group input[type='text'] {
-    flex: 1;
-    margin-right: 0;
-  }
-
-  .input-group button {
-    flex-shrink: 0;
-    width: auto;
-  }
 }
 
-/* Small Screens */
 @media (max-width: 470px) {
   body {
     overflow-x: hidden;
   }
 
-  .habit-container {
+  .habit-container,
+  .plant-section {
     padding: 0.5rem;
-    padding-bottom: 4rem;
-    margin: 0 auto;
     max-width: 80%;
     text-align: center;
   }
 
   .input-group {
     flex-direction: row;
-    align-items: center;
     width: 100%;
     gap: 0.5rem;
   }
@@ -311,12 +246,6 @@ button:hover {
   .input-group input[type='text'] {
     flex: 1;
     width: 100%;
-    min-width: 0;
-  }
-
-  .input-group button {
-    flex-shrink: 0;
-    width: auto;
   }
 
   .habit-list {
