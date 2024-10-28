@@ -43,6 +43,17 @@ button:hover {
 }
 
 /* ========== 3. Habit Tracker ========== */
+
+.habit-tracker-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem; 
+  max-width: 90%; 
+  margin: 0 auto;
+  flex-wrap: wrap; 
+}
+
 .habit-container {
   background-color: var(--primary-color);
   padding: 2rem;
@@ -155,6 +166,13 @@ button:hover {
 /* ========== 7. Plant Section ========== */
 .plant-section {
   margin: 1rem;
+}
+
+.plant-section img {
+  max-width: 50%; /* Adjust this percentage to your liking */
+  height: auto; /* Keeps the aspect ratio */
+  display: block;
+  margin: 0 auto; /* Centers the image */
 }
 
 .plant-collection {
