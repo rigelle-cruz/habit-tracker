@@ -146,7 +146,7 @@ const HabitList = () => {
 		: list;
 
 	return (
-		<div>
+		<div className='page-container'>
 			<div className="navigation">
 				<Link to="/deleted-habits">
 					<button className="btn btn-secondary pixel-corners-no-border">
