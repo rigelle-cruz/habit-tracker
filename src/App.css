@@ -15,215 +15,250 @@
 
 /* ========== 1. Global Styles ========== */
 #root {
-  margin: 0 auto;
-  text-align: center;
+	margin: 1rem;
+	text-align: center;
+	min-width: 300px;
+	flex-wrap: wrap;
 }
 
 button {
-  border: none;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  font-family: 'Silkscreen', sans-serif;
-  background-color: #708294;
-  color: var(--primary-color);
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+	border: none;
+	padding: 0.5rem 1rem;
+	font-size: 1rem;
+	font-family: 'Silkscreen', sans-serif;
+	background-color: #708294;
+	color: var(--primary-color);
+	cursor: pointer;
+	transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #708294a6;
+	background-color: #708294a6;
+}
+
+.page-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 /* ========== 2. Navigation ========== */
 .navigation {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  margin: 1rem auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	gap: 1rem;
+	margin-top: 2rem;
 }
 
 /* ========== 3. Habit Tracker ========== */
 .habit-tracker-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 1rem;
-  max-width: 100%;
-  margin: 0 auto;
-  flex-wrap: wrap;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	margin: 2rem;
 }
 
-.habit-container,
-.plant-section {
-  background-color: var(--primary-color);
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 350px;
-  height: 100%;
+.habit-container {
+	box-sizing: border-box;
+	padding: 0.5rem;
+}
+
+.habit-container {
+	height: 100%;
+	width: 100%;
+	max-width: 50vh;
+	min-width: 300px;
+	background-color: var(--primary-color);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Completed Button Position */
 .completed-button {
-  margin-top: 10px;
+	margin: 1rem;
 }
 
 /* ========== 4. Input Group ========== */
 .input-group {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-bottom: 1.5rem;
 }
 
 input[type='text'] {
-  border: none;
-  outline: none;
-  padding: 0.5rem;
-  font-size: 1rem;
-  background-color: var(--secondary-color);
-  color: var(--text-color);
-  font-family: 'Silkscreen', sans-serif;
-  margin-right: 0.5rem;
+	border: none;
+	outline: none;
+	padding: 0.5rem;
+	font-size: 1rem;
+	background-color: var(--secondary-color);
+	color: var(--text-color);
+	font-family: 'Silkscreen', sans-serif;
+	margin-right: 0.25rem;
 }
 
 /* ========== 5. Buttons ========== */
-button, .completed-button {
-  font-family: 'Silkscreen', sans-serif;
-  color: var(--primary-color);
-  transition: background-color 0.3s ease;
+button,
+.completed-button {
+	font-family: 'Silkscreen', sans-serif;
+	color: var(--primary-color);
+	transition: background-color 0.3s ease;
 }
 
-button:hover, .completed-button:hover {
-  background-color: #708294a6;
+button:hover,
+.completed-button:hover {
+	background-color: #708294a6;
 }
 
 /* ========== 6. Habit List ========== */
 .habit-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  overflow-y: auto;
-  min-height: 50vh;
-  max-height: 50vh;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	overflow-y: auto;
+	min-height: 50vh;
+	max-height: 50vh;
 }
 
 .habit-item {
-  background-color: var(--secondary-color);
-  padding: 0.75rem;
-  margin-bottom: 0.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--text-color);
+	background-color: var(--secondary-color);
+	padding: 0.75rem;
+	margin-bottom: 0.5rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: var(--text-color);
 }
 
 .habit-item input[type='text'] {
-  border: none;
-  flex-grow: 1;
-  margin-right: 0.5rem;
+	border: none;
+	flex-grow: 1;
 }
 
 .habit-item button {
-  background: none;
-  cursor: pointer;
-  color: #708294;
-  outline: none;
-  padding: 0;
-  margin-left: 0.5rem;
+	background: none;
+	cursor: pointer;
+	color: #708294;
+	outline: none;
+	margin-left: 0.5rem;
 }
 
 .habit-item button:hover {
-  color: #708294a6;
+	color: #708294a6;
 }
 
 .habit-item button:last-child {
-  color: #ff6f61;
+	color: #ff6f61;
 }
 
 .habit-item button:last-child:hover {
-  color: #e45b54;
+	color: #e45b54;
 }
 
 /* ========== 7. Plant Section ========== */
 .plant-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 50vh;
+	max-width: 50vh;
+	min-width: 300px;
+
+	background-color: var(--primary-color);
 }
 
 .plant-section img {
-  max-width: 100%;
-  height: auto;
+	max-width: 65%;
+	height: auto;
 }
 
 .plant-container {
-  background-color: var(--secondary-color);
+	background-color: var(--secondary-color);
+	width: fit-content;
 }
 
 .plant-collection {
-  list-style-type: none;
+	list-style-type: none;
 }
 
 /* ========== 8. Deleted Habits ========== */
 .deleted-habits {
-  list-style-type: none;
-  padding: 0;
-  margin-bottom: 10px;
+	list-style-type: none;
+	padding: 0;
+	margin-bottom: 10px;
 }
 
 .deleted-habit-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	border-bottom: 1px solid #ccc;
 }
 
 /* ========== 9. Completed State ========== */
 .completed {
-  text-decoration: line-through;
-  color: gray;
+	text-decoration: line-through;
+	color: gray;
 }
 
 .completed::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0.1em;
-  border-bottom: 3px solid gray;
-  pointer-events: none;
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0.1em;
+	border-bottom: 3px solid gray;
+	pointer-events: none;
 }
 
 /* ========== 10. Media Queries ========== */
 
 /* Medium Screens */
-@media (max-width: 768px) {
-  
-  .habit-tracker-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 2rem;
-  }
-  
-  .navigation {
-    flex-direction: column;
-    gap: 10px;
-  }
+@media (max-width: 800px) {
+	.habit-tracker-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin: 2rem;
+	}
 
-  .input-group {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+	.page-container,
+	.habit-tracker-container {
+		min-width: 200px;
+		max-width: 100vw;
+		padding: 0 1rem;
+	}
 
-  .habit-list {
-    max-height: 45vh;
-  }
+	.habit-container,
+	.plant-section {
+		max-width: 90%;
+		margin-bottom: 1rem;
+	}
+
+	.navigation {
+		flex-direction: column;
+	}
+
+	.habit-list {
+		max-height: 45vh;
+	}
 }
 
+@media (max-width: 580px) {
+	.input-group {
+		flex-direction: column;
+		gap: 0.5rem;
+	}
 
+	input[type='text'] {
+		margin-right: 0;
+	}
+}
