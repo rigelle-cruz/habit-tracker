@@ -9,9 +9,10 @@
  * 5. Buttons
  * 6. Habit List
  * 7. Plant Section
- * 8. Deleted Habits
- * 9. Completed State
- * 10. Media Queries
+ * 8. Alert Messages
+ * 9. Deleted Habits
+ * 10. Completed State
+ * 11. Media Queries
  */
 
 /* ========== 1. Global Styles ========== */
@@ -208,7 +209,12 @@ button:hover,
 	list-style-type: none;
 }
 
-/* ========== 8. Deleted Habits ========== */
+/* ========== 8. Alert Messages ========== */
+.new-seed-alert {
+	
+}
+
+/* ========== 9. Deleted Habits ========== */
 .deleted-habits {
 	list-style-type: none;
 	padding: 0;
@@ -223,7 +229,7 @@ button:hover,
 	border-bottom: 1px solid #ccc;
 }
 
-/* ========== 9. Completed State ========== */
+/* ========== 10. Completed State ========== */
 .completed {
 	text-decoration: line-through;
 	color: gray;
@@ -239,7 +245,7 @@ button:hover,
 	pointer-events: none;
 }
 
-/* ========== 10. Media Queries ========== */
+/* ========== 11. Media Queries ========== */
 /* Medium Screens */
 @media (max-width: 800px) {
 	.habit-tracker-container {
