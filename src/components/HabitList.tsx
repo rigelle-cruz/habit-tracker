@@ -118,10 +118,10 @@ const HabitList = () => {
 		newLevel = Math.min(newLevel, 4);
 
 		if (remainder === 0 && newCompletedCount > 0) {
-			alert(<NewSeedAlert />);
+			<NewSeedAlert />; //FIX THIS TO APPEAR WHEN THERE'S A NEW SEED
 
 			const imagePath = `/images/plant/plant-type-${plantTypeIndex + 1}-4.png`;
-			addPlantToCollection(imagePath);
+			addPlantToCollection(imagePath); //This adds to the plant collection whenever it reaches the 4th plant level
 		}
 
 		setCompletedCount(remainder);
