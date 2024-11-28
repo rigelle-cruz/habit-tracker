@@ -20,6 +20,7 @@ import {
 	getDeletedHabitsFromLocalStorage,
 } from '../models/deletedHabitsUtils.ts';
 import Plant from './Plant';
+import NewSeedAlert from './NewSeedAlert.tsx';
 
 const HabitList = () => {
 	const [list, setList] = useState<Habit[]>([]);
@@ -117,7 +118,7 @@ const HabitList = () => {
 		newLevel = Math.min(newLevel, 4);
 
 		if (remainder === 0 && newCompletedCount > 0) {
-			alert('NEW SEED AVAILABLE!!');
+			alert(<NewSeedAlert />);
 
 			const imagePath = `/images/plant/plant-type-${plantTypeIndex + 1}-4.png`;
 			addPlantToCollection(imagePath);
@@ -146,7 +147,7 @@ const HabitList = () => {
 		: list;
 
 	return (
-		<div className='page-container'>
+		<div className="page-container">
 			<div className="navigation">
 				<Link to="/deleted-habits">
 					<button className="btn btn-secondary pixel-corners-no-border">
