@@ -20,7 +20,6 @@ import {
 	getDeletedHabitsFromLocalStorage,
 } from '../models/deletedHabitsUtils.ts';
 import Plant from './Plant';
-import NewSeedAlert from './NewSeedAlert.tsx';
 
 const HabitList = () => {
 	const [list, setList] = useState<Habit[]>([]);
@@ -30,6 +29,7 @@ const HabitList = () => {
 	const [showCompleted, setShowCompleted] = useState<boolean>(false);
 	const [completedCount, setCompletedCount] = useState<number>(0);
 	const [plantLevel, setPlantLevel] = useState<number>(1);
+	const [seed, setSeed] = useState<number>(Date.now());
 
 	useEffect(() => {
 		const savedHabits = getHabitsFromLocalStorage();
@@ -118,10 +118,11 @@ const HabitList = () => {
 		newLevel = Math.min(newLevel, 4);
 
 		if (remainder === 0 && newCompletedCount > 0) {
-			<NewSeedAlert />; //FIX THIS TO APPEAR WHEN THERE'S A NEW SEED
+			//ADD alert component for new seed
 
+			setSeed(Date.now()); // Update the seed
 			const imagePath = `/images/plant/plant-type-${plantTypeIndex + 1}-4.png`;
-			addPlantToCollection(imagePath); //This adds to the plant collection whenever it reaches the 4th plant level
+			addPlantToCollection(imagePath); // Add to the plant collection
 		}
 
 		setCompletedCount(remainder);
@@ -250,7 +251,7 @@ const HabitList = () => {
 
 				<div className="plant-section pixel-corners">
 					<div className="plant-container pixel-corners-no-border">
-						<Plant level={plantLevel} key={completedCount} />
+						<Plant level={plantLevel} key={completedCount} seed={seed} />
 					</div>
 				</div>
 			</div>
