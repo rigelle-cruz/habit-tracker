@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 type PlantProps = {
 	level: number;
-  seed?: number;
+	seed?: number;
 };
 
 const plantAssets = [
@@ -42,22 +42,27 @@ const Plant = ({ level, seed }: PlantProps) => {
 	const [selectedPlantType, setSelectedPlantType] = useState<number>(0);
 
 	useEffect(() => {
-		if (level === 1) {
-			const randomPlantType = Math.floor(Math.random() * plantAssets.length);
-			setSelectedPlantType(randomPlantType);
-		}
+		const plantType =
+			seed !== undefined
+				? seed % plantAssets.length
+				: Math.floor(Math.random() * plantAssets.length);
+
+		setSelectedPlantType(plantType);
 	}, [seed]);
+
+	const plantImage =
+		plantAssets[selectedPlantType][
+			Math.min(level - 1, plantAssets[selectedPlantType].length - 1)
+		];
 
 	return (
 		<div>
 			<img
-				src={
-					plantAssets[selectedPlantType][
-						Math.min(level - 1, plantAssets[selectedPlantType].length - 1)
-					]
-				}
+				src={plantImage}
 				alt={`Plant level ${level}`}
+				className="plant-image"
 			/>
+			<p>{level === 4 ? 'Your plant is fully grown!' : `Keep nurturing it!`}</p>
 		</div>
 	);
 };
