@@ -29,7 +29,17 @@ const HabitList = () => {
 	const [showCompleted, setShowCompleted] = useState<boolean>(false);
 	const [completedCount, setCompletedCount] = useState<number>(0);
 	const [plantLevel, setPlantLevel] = useState<number>(1);
-	const [seed, setSeed] = useState<number>(Date.now());
+
+	const [seed, setSeed] = useState<number>(() => {
+		// Loads seed from localStorage or generate a new one
+		const savedSeed = localStorage.getItem('plantSeed');
+		return savedSeed ? Number(savedSeed) : Date.now();
+	});
+
+	useEffect(() => {
+		// saves the seed to local storage
+		localStorage.setItem('plantSeed', seed.toString());
+	}, [seed]);
 
 	useEffect(() => {
 		const savedHabits = getHabitsFromLocalStorage();
@@ -121,7 +131,7 @@ const HabitList = () => {
 			//ADD alert component for new seed
 
 			setSeed(Date.now()); // Update the seed
-			const imagePath = `/images/plant/plant-type-${plantTypeIndex + 1}-4.png`;
+			const imagePath = `/images/plant/plant-type-${plantTypeIndex + 1}-4.png`; // FIX THIS!! Not rendering the right plant into the plant collection
 			addPlantToCollection(imagePath); // Add to the plant collection
 		}
 
