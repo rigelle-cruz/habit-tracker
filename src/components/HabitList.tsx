@@ -131,7 +131,7 @@ const HabitList = () => {
 			//ADD alert component for new seed
 
 			setSeed(Date.now()); // Update the seed
-			const imagePath = `/images/plant/plant-type-${plantTypeIndex + 1}-4.png`; // FIX THIS!! Not rendering the right plant into the plant collection
+			const imagePath = `/images/plant/plant-type-${plantTypeIndex - 1}-4.png`;
 			addPlantToCollection(imagePath); // Add to the plant collection
 		}
 
