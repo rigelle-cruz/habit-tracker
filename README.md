@@ -11,6 +11,7 @@ All designs and plant assets were designed and drawn by me
 <img src="public/images/original-image.GIF" alt="plant-image" width="100" height="100">
 <img src="public/images/original-image-2.GIF" alt="plant-image" width="100" height="100">
 <img src="public/images/original-image-3.GIF" alt="plant-image" width="100" height="100">
+<img src="public/images/original-image-4.GIF" alt="plant-image" width="100" height="100">
 <br>
 
 ## Features:
@@ -54,9 +55,9 @@ All designs and plant assets were designed and drawn by me
 
   ```js
   useEffect(() => {
-    const savedPlants = getCompletedPlants() // Retrieves the plant collection from localStorage
-    setPlantCollection(savedPlants) // Stores the retrieved plant collection
-  }, []) // An empty array to insert the retrieved data
+    const savedPlants = getCompletedPlants(); // Retrieves the plant collection from localStorage
+    setPlantCollection(savedPlants); // Stores the retrieved plant collection
+  }, []); // An empty array to insert the retrieved data
   ```
 
 ### localStorageUtils.ts
@@ -78,19 +79,19 @@ const imagePath = `public/images/plant/plant-type-${
 ```js
 // Handles Drag and Drop functionality
 const onDragEnd = (result: DropResult) => {
-  const { destination, source } = result
-  if (!destination) return
+  const { destination, source } = result;
+  if (!destination) return;
 
-  const updatedList = Array.from(list)
-  const [removed] = updatedList.splice(source.index, 1)
-  updatedList.splice(destination.index, 0, removed)
+  const updatedList = Array.from(list);
+  const [removed] = updatedList.splice(source.index, 1);
+  updatedList.splice(destination.index, 0, removed);
 
   // Sets new state
-  setList(updatedList)
+  setList(updatedList);
 
   // Stores reordered list in local storage
-  setHabitsInLocalStorage(updatedList)
-}
+  setHabitsInLocalStorage(updatedList);
+};
 ```
 
 ### deletedHabitsUtils.ts
@@ -98,24 +99,24 @@ const onDragEnd = (result: DropResult) => {
 ```js
 export function recoverDeletedHabitToActiveList(habit: DeletedHabit): void {
   // Get deleted habits from local storage
-  const deletedHabits = getDeletedHabitsFromLocalStorage()
+  const deletedHabits = getDeletedHabitsFromLocalStorage();
 
   // Remove the habit from the deleted list
-  const updatedDeletedHabits = deletedHabits.filter((h) => h.id !== habit.id)
-  setDeletedHabitsInLocalStorage(updatedDeletedHabits)
+  const updatedDeletedHabits = deletedHabits.filter((h) => h.id !== habit.id);
+  setDeletedHabitsInLocalStorage(updatedDeletedHabits);
 
   // Convert the DeletedHabit type to the Habit type if needed
   const activeHabit = {
     id: habit.id,
     text: habit.text,
     completed: habit.completed,
-  }
+  };
 
   // Get active habits from local storage
-  const activeHabits = getHabitsFromLocalStorage()
+  const activeHabits = getHabitsFromLocalStorage();
 
   // Add the habit to the active habits list
-  activeHabits.push(activeHabit)
-  setHabitsInLocalStorage(activeHabits)
+  activeHabits.push(activeHabit);
+  setHabitsInLocalStorage(activeHabits);
 }
 ```
